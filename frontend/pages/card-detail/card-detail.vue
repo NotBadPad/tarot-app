@@ -86,8 +86,7 @@ onMounted(() => {
   let id = null;
   let reversed = false;
   
-  // H5 模式：从路径 /card/:id 解析
-  try {
+  if (typeof window !== 'undefined' && window.location) {
     const path = window.location.pathname;
     const match = path.match(/\/card\/([^\/]+)/);
     if (match) {
@@ -95,10 +94,7 @@ onMounted(() => {
     }
     const params = new URLSearchParams(window.location.search);
     reversed = params.get('reversed') === 'true';
-  } catch (e) {}
-  
-  // 小程序模式回退
-  if (id === null) {
+  } else {
     try {
       const options = uni.getEnterOptionsSync();
       const query = options.query || {};

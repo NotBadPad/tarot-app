@@ -57,6 +57,7 @@ export function drawDailyCard() {
   // 保存
   uni.setStorageSync(DAILY_CARD_KEY, dailyCard);
   uni.setStorageSync(DAILY_DRAWN_KEY, Date.now().toString());
+  saveToHistory(dailyCard);
   
   return dailyCard;
 }

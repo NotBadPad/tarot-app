@@ -51,13 +51,10 @@
       
       <!-- 解读内容 -->
       <div v-else-if="interpretation" class="interpretation-content">
-        <!-- #ifdef H5 -->
-        <div v-html="formatInterpretation(interpretation)"></div>
-        <!-- #endif -->
-        <!-- #ifndef H5 -->
-        <rich-text :nodes="formatInterpretation(interpretation)"></rich-text>
-        <!-- #endif -->
-      </div>
+      <!-- 解读内容 -->
+      <div v-if="isH5" v-html="formatInterpretation(interpretation)"></div>
+      <rich-text v-else :nodes="formatInterpretation(interpretation)"></rich-text>
+    </div>
       
       <!-- 获取按钮 -->
       <button 
@@ -86,57 +83,37 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { getCardMeaning, getCardImage } from '@/utils/tarot.js';
+import { getCardMeaning, getCardImage, getCardKeywords } from '@/utils/tarot.js';
 import { getAIInterpretation, getQuickInterpretation } from '@/utils/ai.js';
 
 const reading = ref(null);
 const interpretation = ref('');
 const loading = ref(false);
 const hasAIConfig = ref(false);
+const isH5 = typeof window !== 'undefined' && !!window.location;
 
-// #ifdef H5
 onMounted(() => {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get('id');
+  let id = null;
+  if (typeof window !== 'undefined' && window.location) {
+    const params = new URLSearchParams(window.location.search);
+    id = params.get('id');
+    // H5 模式下后端与前端同源，始终可用
+    hasAIConfig.value = true;
+  } else {
+    try {
+      const options = uni.getEnterOptionsSync();
+      const query = options.query || {};
+      id = query.id;
+    } catch (e) {}
+    const config = uni.getStorageSync('tarot_api_config');
+    hasAIConfig.value = !!(config && config.baseURL);
+  }
   
   if (id) {
     const readings = uni.getStorageSync('tarot_readings') || [];
     reading.value = readings.find(r => r.timestamp == id);
   }
-  
-  // 检查后端是否配置
-  // H5 模式下后端与前端同源，始终可用
-  // #ifdef H5
-  hasAIConfig.value = true;
-  // #endif
-  // #ifndef H5
-  const config = uni.getStorageSync('tarot_api_config');
-  hasAIConfig.value = !!(config && config.baseURL);
-  // #endif
 });
-// #endif
-// #ifndef H5
-onMounted(() => {
-  const options = uni.getEnterOptionsSync();
-  const query = options.query || {};
-  const id = query.id;
-  
-  if (id) {
-    const readings = uni.getStorageSync('tarot_readings') || [];
-    reading.value = readings.find(r => r.timestamp == id);
-  }
-  
-  // 检查后端是否配置
-  // H5 模式下后端与前端同源，始终可用
-  // #ifdef H5
-  hasAIConfig.value = true;
-  // #endif
-  // #ifndef H5
-  const config = uni.getStorageSync('tarot_api_config');
-  hasAIConfig.value = !!(config && config.baseURL);
-  // #endif
-});
-// #endif
 
 const formatTime = (timestamp) => {
   if (!timestamp) return '';

@@ -117,6 +117,47 @@ window.uni = {
     if (el) el.style.opacity = '0'
   },
   getEnterOptionsSync: () => ({ query: {} }),
+  getSystemInfoSync: () => {
+    let deviceId = localStorage.getItem('h5_device_id')
+    if (!deviceId) {
+      deviceId = 'h5-' + Math.random().toString(36).slice(2, 10)
+      localStorage.setItem('h5_device_id', deviceId)
+    }
+    return {
+      deviceId,
+      model: navigator.userAgent,
+      platform: 'h5',
+      system: navigator.platform,
+      screenWidth: window.screen.width,
+      screenHeight: window.screen.height,
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight,
+      language: navigator.language
+    }
+  },
+  setClipboardData: (options) => {
+    const data = options.data || ''
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(data)
+        .then(() => options.success?.())
+        .catch(() => options.fail?.({ errMsg: 'clipboard write failed' }))
+    } else {
+      // fallback: 创建隐藏 textarea 复制
+      const el = document.createElement('textarea')
+      el.value = data
+      el.style.position = 'fixed'
+      el.style.opacity = '0'
+      document.body.appendChild(el)
+      el.select()
+      try {
+        document.execCommand('copy')
+        options.success?.()
+      } catch (e) {
+        options.fail?.({ errMsg: 'copy failed' })
+      }
+      document.body.removeChild(el)
+    }
+  },
   showModal: (options) => {
     if (confirm(options.title + '\n' + options.content)) {
       options.success && options.success({ confirm: true })

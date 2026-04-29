@@ -31,10 +31,10 @@
       </div>
       
       <!-- 牌堆 -->
-      <div class="deck-area" @click="drawCard">
+      <div class="deck-area" @click="drawCard" v-if="remainingCards > 0">
         <div class="deck-stack">
           <div 
-            v-for="(card, index) in Math.min(remainingCards, 10)" 
+            v-for="index in 10" 
             :key="index"
             class="deck-card"
             :style="{ transform: `translateY(-${index * 2}px) rotate(${(index - 5) * 0.5}deg)` }"
@@ -105,27 +105,22 @@ const drawnCards = ref([]);
 const totalCards = computed(() => spread.value?.positions.length || 1);
 const remainingCards = computed(() => totalCards.value - currentIndex.value);
 
-// H5模式下用onMounted+URL参数替代onLoad
-// #ifdef H5
 onMounted(() => {
-  const params = new URLSearchParams(window.location.search);
-  spreadId.value = params.get('spreadId') || 'single';
-  question.value = decodeURIComponent(params.get('question') || '');
-  spread.value = SPREADS[spreadId.value];
-  // 开始洗牌
-  startShuffle();
-});
-// #endif
-// #ifndef H5
-onMounted(() => {
-  const options = uni.getEnterOptionsSync();
-  const query = options.query || {};
+  let query = {};
+  if (typeof window !== 'undefined' && window.location) {
+    const params = new URLSearchParams(window.location.search);
+    query = Object.fromEntries(params);
+  } else {
+    try {
+      const options = uni.getEnterOptionsSync();
+      query = options.query || {};
+    } catch (e) {}
+  }
   spreadId.value = query.spreadId || 'single';
   question.value = decodeURIComponent(query.question || '');
   spread.value = SPREADS[spreadId.value];
   startShuffle();
 });
-// #endif
 
 const startShuffle = async () => {
   isShuffling.value = true;
