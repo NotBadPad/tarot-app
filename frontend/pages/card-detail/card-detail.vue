@@ -82,18 +82,36 @@ import { getCardImage } from '@/utils/tarot.js';
 const card = ref(null);
 const isReversed = ref(false);
 
+const getHashPathAndQuery = () => {
+  let path = '';
+  let queryStr = '';
+  if (window.location.hash) {
+    const hash = window.location.hash.slice(1); // 去掉 #
+    const qIdx = hash.indexOf('?');
+    if (qIdx !== -1) {
+      path = hash.slice(0, qIdx);
+      queryStr = hash.slice(qIdx + 1);
+    } else {
+      path = hash;
+    }
+  } else {
+    path = window.location.pathname;
+    queryStr = window.location.search.slice(1);
+  }
+  return { path, query: Object.fromEntries(new URLSearchParams(queryStr)) };
+};
+
 onMounted(() => {
   let id = null;
   let reversed = false;
   
   if (typeof window !== 'undefined' && window.location) {
-    const path = window.location.pathname;
+    const { path, query } = getHashPathAndQuery();
     const match = path.match(/\/card\/([^\/]+)/);
     if (match) {
       id = match[1];
     }
-    const params = new URLSearchParams(window.location.search);
-    reversed = params.get('reversed') === 'true';
+    reversed = query.reversed === 'true';
   } else {
     try {
       const options = uni.getEnterOptionsSync();

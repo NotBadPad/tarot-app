@@ -92,11 +92,21 @@ const loading = ref(false);
 const hasAIConfig = ref(false);
 const isH5 = typeof window !== 'undefined' && !!window.location;
 
+const getQueryParam = (key) => {
+  let queryStr = '';
+  if (window.location.hash) {
+    const idx = window.location.hash.indexOf('?');
+    if (idx !== -1) queryStr = window.location.hash.slice(idx + 1);
+  } else {
+    queryStr = window.location.search.slice(1);
+  }
+  return new URLSearchParams(queryStr).get(key);
+};
+
 onMounted(() => {
   let id = null;
   if (typeof window !== 'undefined' && window.location) {
-    const params = new URLSearchParams(window.location.search);
-    id = params.get('id');
+    id = getQueryParam('id');
     // H5 模式下后端与前端同源，始终可用
     hasAIConfig.value = true;
   } else {

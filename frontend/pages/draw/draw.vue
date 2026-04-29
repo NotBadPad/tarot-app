@@ -105,17 +105,19 @@ const drawnCards = ref([]);
 const totalCards = computed(() => spread.value?.positions.length || 1);
 const remainingCards = computed(() => totalCards.value - currentIndex.value);
 
-onMounted(() => {
-  let query = {};
-  if (typeof window !== 'undefined' && window.location) {
-    const params = new URLSearchParams(window.location.search);
-    query = Object.fromEntries(params);
+const getQueryParams = () => {
+  let queryStr = '';
+  if (window.location.hash) {
+    const idx = window.location.hash.indexOf('?');
+    if (idx !== -1) queryStr = window.location.hash.slice(idx + 1);
   } else {
-    try {
-      const options = uni.getEnterOptionsSync();
-      query = options.query || {};
-    } catch (e) {}
+    queryStr = window.location.search.slice(1);
   }
+  return Object.fromEntries(new URLSearchParams(queryStr));
+};
+
+onMounted(() => {
+  const query = getQueryParams();
   spreadId.value = query.spreadId || 'single';
   question.value = decodeURIComponent(query.question || '');
   spread.value = SPREADS[spreadId.value];
