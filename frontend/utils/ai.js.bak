@@ -1,0 +1,231 @@
+// AI 塔罗解读接口
+// 支持多种大模型 API
+
+// API 配置 - 用户需要填充自己的 API Key
+const API_CONFIG = {
+  // OpenAI
+  openai: {
+    url: 'https://api.openai.com/v1/chat/completions',
+    model: 'gpt-4o-mini',
+    headers: (key) => ({
+      'Authorization': `Bearer ${key}`,
+      'Content-Type': 'application/json'
+    })
+  },
+  // Claude
+  claude: {
+    url: 'https://api.anthropic.com/v1/messages',
+    model: 'claude-3-haiku-20240307',
+    headers: (key) => ({
+      'x-api-key': key,
+      'Content-Type': 'application/json',
+      'anthropic-version': '2023-06-01'
+    })
+  },
+  // 国内推荐: 阿里云/通义千问/Kimi
+  aliyun: {
+    url: 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation',
+    model: 'qwen-turbo',
+    headers: (key) => ({
+      'Authorization': `Bearer ${key}`,
+      'Content-Type': 'application/json'
+    })
+  },
+  kimi: {
+    url: 'https://api.moonshot.cn/v1/chat/completions',
+    model: 'moonshot-v1-8k',
+    headers: (key) => ({
+      'Authorization': `Bearer ${key}`,
+      'Content-Type': 'application/json'
+    })
+  }
+};
+
+/**
+ * 构建塔罗解读的系统提示词
+ */
+function buildSystemPrompt() {
+  return `你是一位温柔且有洞察力的塔罗占卡师。
+
+解读原则:
+1. 根据抽到的牌面给出深度解读，结合正逆位分析
+2. 联系牌阵位置含义，提供具体建议
+3. 语气温暖鼓舞，但不避讳提醒注意事项
+4. 结合求占者的问题给出有针对性的建议
+5. 解读长度适中（每张牌 2-3 句话，总体 200-400 字）
+
+注意事项:
+- 塔罗是指引，不是命定
+- 强调个人選择的重要性
+- 使用"你"与用户交流，增加亲切感`;
+}
+
+/**
+ * 构建用户提示词
+ */
+function buildUserPrompt(question, cards, spreadName) {
+  const cardsText = cards.map((card, i) => {
+    const pos = card.position ? `(${card.position.name})` : '';
+    const orientation = card.isReversed ? '逆位' : '正位';
+    return `${i + 1}. ${card.name} ${orientation} ${pos}`;
+  }).join('\n');
+
+  return `我的问题: ${question || '想看看当下的运势'}
+
+牌阵: ${spreadName}
+
+抽到的牌:
+${cardsText}
+
+请为我进行塔罗解读，包括:
+1. 整体能量场描述
+2. 各张牌的具体解读
+3. 给出实际建议`;
+}
+
+/**
+ * 调用 AI API 进行塔罗解读
+ * @param {Object} options
+ * @param {string} options.question - 求占问题
+ * @param {Array} options.cards - 抽到的牌
+ * @param {string} options.spreadName - 牌阵名称
+ * @param {string} options.provider - API 提供商 (openai/claude/aliyun/kimi)
+ * @param {string} options.apiKey - API 密钥
+ */
+export async function getAIInterpretation({ question, cards, spreadName, provider = 'openai', apiKey }) {
+  if (!apiKey) {
+    return {
+      success: false,
+      error: '请先配置 API Key'
+    };
+  }
+
+  const config = API_CONFIG[provider];
+  if (!config) {
+    return {
+      success: false,
+      error: `不支持的 API 提供商: ${provider}`
+    };
+  }
+
+  const systemPrompt = buildSystemPrompt();
+  const userPrompt = buildUserPrompt(question, cards, spreadName);
+
+  try {
+    let body;
+    
+    if (provider === 'claude') {
+      body = JSON.stringify({
+        model: config.model,
+        max_tokens: 1000,
+        messages: [
+          { role: 'user', content: `${systemPrompt}\n\n${userPrompt}` }
+        ]
+      });
+    } else if (provider === 'aliyun') {
+      body = JSON.stringify({
+        model: config.model,
+        input: {
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: userPrompt }
+          ]
+        }
+      });
+    } else {
+      // OpenAI 和 Kimi 格式相同
+      body = JSON.stringify({
+        model: config.model,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userPrompt }
+        ],
+        temperature: 0.7
+      });
+    }
+
+    const response = await uni.request({
+      url: config.url,
+      method: 'POST',
+      header: config.headers(apiKey),
+      data: body,
+      timeout: 30000
+    });
+
+    if (response.statusCode !== 200) {
+      throw new Error(`API 请求失败: ${response.statusCode}`);
+    }
+
+    const result = response.data;
+    let interpretation;
+
+    if (provider === 'claude') {
+      interpretation = result.content?.[0]?.text;
+    } else if (provider === 'aliyun') {
+      interpretation = result.output?.text;
+    } else {
+      interpretation = result.choices?.[0]?.message?.content;
+    }
+
+    if (!interpretation) {
+      throw new Error('无法解析 API 响应');
+    }
+
+    return {
+      success: true,
+      interpretation,
+      timestamp: Date.now()
+    };
+
+  } catch (error) {
+    console.error('AI 解读错误:', error);
+    return {
+      success: false,
+      error: error.message || '解读失败，请稍后重试'
+    };
+  }
+}
+
+/**
+ * 快速解读（不调用 API，用于本地演示）
+ */
+export function getQuickInterpretation(cards) {
+  const interpretations = cards.map(card => {
+    const meaning = card.isReversed 
+      ? (card.meaning?.reversed || '需要再次思考这个领域')
+      : (card.meaning?.upright || '积极的能量正在涌动');
+    
+    return `**${card.name}** ${card.isReversed ? '逆位' : '正位'}
+${card.position?.name ? `位置：${card.position.name}` : ''}
+关键词：${(card.keywords || []).slice(0, 3).join('、')}
+核心信息：${meaning.split('。')[0]}。`;
+  }).join('\n\n');
+
+  return {
+    success: true,
+    interpretation: `🔮 **基础解读**\n\n${interpretations}\n\n---\n\n这是基于牌面含义的简要解读。\n想获得更深入的 AI 个性化分析，可以配置 API Key 开启智能解读功能。`,
+    timestamp: Date.now(),
+    isQuick: true
+  };
+}
+
+/**
+ * 保存 API 配置
+ */
+export function saveApiConfig(config) {
+  uni.setStorageSync('tarot_ai_config', config);
+}
+
+/**
+ * 获取 API 配置
+ */
+export function getApiConfig() {
+  return uni.getStorageSync('tarot_ai_config') || null;
+}
+
+export default {
+  getAIInterpretation,
+  getQuickInterpretation,
+  saveApiConfig,
+  getApiConfig
+};

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 420" width="300" height="420">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="50%" stop-color="#2d1b4e"/>
+      <stop offset="100%" stop-color="#1a0a2e"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="300" height="420" rx="16" fill="url(#bg)" stroke="#9d4edd" stroke-width="3"/>
+  
+  <!-- 内边框 -->
+  <rect x="12" y="12" width="276" height="396" rx="12" fill="none" stroke="#7b2cbf" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- 四角装饰 -->
+  <path d="M 20 30 Q 20 20 30 20" fill="none" stroke="#e0aaff" stroke-width="2" opacity="0.8"/>
+  <path d="M 280 30 Q 280 20 270 20" fill="none" stroke="#e0aaff" stroke-width="2" opacity="0.8"/>
+  <path d="M 20 390 Q 20 400 30 400" fill="none" stroke="#e0aaff" stroke-width="2" opacity="0.8"/>
+  <path d="M 280 390 Q 280 400 270 400" fill="none" stroke="#e0aaff" stroke-width="2" opacity="0.8"/>
+  
+  <!-- 中央符号 -->
+  <circle cx="150" cy="150" r="60" fill="none" stroke="#9d4edd" stroke-width="2" opacity="0.4"/>
+  <circle cx="150" cy="150" r="45" fill="none" stroke="#e0aaff" stroke-width="1.5" opacity="0.5"/>
+  <text x="150" y="165" text-anchor="middle" fill="#e0aaff" font-size="48" font-family="serif" filter="url(#glow)">✦</text>
+  
+  <!-- 下方文字 -->
+  <text x="150" y="260" text-anchor="middle" fill="#9d4edd" font-size="18" font-family="serif" letter-spacing="6" opacity="0.8">TAROT</text>
+  <text x="150" y="290" text-anchor="middle" fill="#7b2cbf" font-size="12" font-family="serif" letter-spacing="3" opacity="0.6">MYSTIC DREAMS</text>
+  
+  <!-- 底部装饰线 -->
+  <line x1="80" y1="330" x2="220" y2="330" stroke="#9d4edd" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="150" cy="330" r="4" fill="#e0aaff" opacity="0.4"/>
+  <circle cx="120" cy="330" r="2" fill="#9d4edd" opacity="0.3"/>
+  <circle cx="180" cy="330" r="2" fill="#9d4edd" opacity="0.3"/>
+</svg>

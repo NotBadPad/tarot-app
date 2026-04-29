@@ -1,0 +1,71 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "🔮 塔罗梦语"
+      }
+    },
+    {
+      "path": "pages/daily/daily",
+      "style": {
+        "navigationBarTitleText": "每日一抽"
+      }
+    },
+    {
+      "path": "pages/draw/draw",
+      "style": {
+        "navigationBarTitleText": "洗牌抽牌"
+      }
+    },
+    {
+      "path": "pages/result/result",
+      "style": {
+        "navigationBarTitleText": "解读结果"
+      }
+    },
+    {
+      "path": "pages/card-detail/card-detail",
+      "style": {
+        "navigationBarTitleText": "牌意详解"
+      }
+    },
+    {
+      "path": "pages/history/history",
+      "style": {
+        "navigationBarTitleText": "历史记录"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#1a1a2e",
+    "backgroundColor": "#0f0f1e"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#9d4edd",
+    "backgroundColor": "#1a1a2e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "占卜",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/daily/daily",
+        "text": "日运",
+        "iconPath": "static/tabbar/moon.png",
+        "selectedIconPath": "static/tabbar/moon-active.png"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "历史",
+        "iconPath": "static/tabbar/history.png",
+        "selectedIconPath": "static/tabbar/history-active.png"
+      }
+    ]
+  }
+}
