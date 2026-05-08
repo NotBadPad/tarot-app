@@ -1,0 +1,3725 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "vite-rpx-plugin.js",
+      "file_type": "code",
+      "source_file": "frontend/vite-rpx-plugin.js",
+      "source_location": "L1",
+      "id": "frontend_vite_rpx_plugin_js",
+      "community": 12,
+      "norm_label": "vite-rpx-plugin.js"
+    },
+    {
+      "label": "rpxToPxPlugin()",
+      "file_type": "code",
+      "source_file": "frontend/vite-rpx-plugin.js",
+      "source_location": "L2",
+      "id": "frontend_vite_rpx_plugin_rpxtopxplugin",
+      "community": 12,
+      "norm_label": "rpxtopxplugin()"
+    },
+    {
+      "label": "uni-app-mock.js",
+      "file_type": "code",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L1",
+      "id": "frontend_uni_app_mock_js",
+      "community": 9,
+      "norm_label": "uni-app-mock.js"
+    },
+    {
+      "label": "onLoad()",
+      "file_type": "code",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L4",
+      "id": "frontend_uni_app_mock_onload",
+      "community": 9,
+      "norm_label": "onload()"
+    },
+    {
+      "label": "onReady()",
+      "file_type": "code",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L20",
+      "id": "frontend_uni_app_mock_onready",
+      "community": 9,
+      "norm_label": "onready()"
+    },
+    {
+      "label": "onUnload()",
+      "file_type": "code",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L21",
+      "id": "frontend_uni_app_mock_onunload",
+      "community": 9,
+      "norm_label": "onunload()"
+    },
+    {
+      "label": "onShow()",
+      "file_type": "code",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L22",
+      "id": "frontend_uni_app_mock_onshow",
+      "community": 9,
+      "norm_label": "onshow()"
+    },
+    {
+      "label": "onHide()",
+      "file_type": "code",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L23",
+      "id": "frontend_uni_app_mock_onhide",
+      "community": 9,
+      "norm_label": "onhide()"
+    },
+    {
+      "label": "onPullDownRefresh()",
+      "file_type": "code",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L24",
+      "id": "frontend_uni_app_mock_onpulldownrefresh",
+      "community": 9,
+      "norm_label": "onpulldownrefresh()"
+    },
+    {
+      "label": "onReachBottom()",
+      "file_type": "code",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L25",
+      "id": "frontend_uni_app_mock_onreachbottom",
+      "community": 9,
+      "norm_label": "onreachbottom()"
+    },
+    {
+      "label": "onShareAppMessage()",
+      "file_type": "code",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L26",
+      "id": "frontend_uni_app_mock_onshareappmessage",
+      "community": 9,
+      "norm_label": "onshareappmessage()"
+    },
+    {
+      "label": "main.h5.js",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L1",
+      "id": "frontend_main_h5_js",
+      "community": 3,
+      "norm_label": "main.h5.js"
+    },
+    {
+      "label": "routes",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L14",
+      "id": "frontend_main_h5_routes",
+      "community": 3,
+      "norm_label": "routes"
+    },
+    {
+      "label": "router",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L24",
+      "id": "frontend_main_h5_router",
+      "community": 3,
+      "norm_label": "router"
+    },
+    {
+      "label": "convertUrl()",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L30",
+      "id": "frontend_main_h5_converturl",
+      "community": 3,
+      "norm_label": "converturl()"
+    },
+    {
+      "label": "showToastUI()",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L60",
+      "id": "frontend_main_h5_showtoastui",
+      "community": 3,
+      "norm_label": "showtoastui()"
+    },
+    {
+      "label": "url",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L85",
+      "id": "frontend_main_h5_url",
+      "community": 3,
+      "norm_label": "url"
+    },
+    {
+      "label": "raw",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L106",
+      "id": "frontend_main_h5_raw",
+      "community": 3,
+      "norm_label": "raw"
+    },
+    {
+      "label": "el",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L116",
+      "id": "frontend_main_h5_el",
+      "community": 3,
+      "norm_label": "el"
+    },
+    {
+      "label": "deviceId",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L121",
+      "id": "frontend_main_h5_deviceid",
+      "community": 3,
+      "norm_label": "deviceid"
+    },
+    {
+      "label": "controller",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L170",
+      "id": "frontend_main_h5_controller",
+      "community": 3,
+      "norm_label": "controller"
+    },
+    {
+      "label": "timer",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L171",
+      "id": "frontend_main_h5_timer",
+      "community": 3,
+      "norm_label": "timer"
+    },
+    {
+      "label": "fetchOptions",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L173",
+      "id": "frontend_main_h5_fetchoptions",
+      "community": 3,
+      "norm_label": "fetchoptions"
+    },
+    {
+      "label": "params",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L185",
+      "id": "frontend_main_h5_params",
+      "community": 3,
+      "norm_label": "params"
+    },
+    {
+      "label": "p",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L191",
+      "id": "frontend_main_h5_p",
+      "community": 3,
+      "norm_label": "p"
+    },
+    {
+      "label": "app",
+      "file_type": "code",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L223",
+      "id": "frontend_main_h5_app",
+      "community": 3,
+      "norm_label": "app"
+    },
+    {
+      "label": "App.h5.vue",
+      "file_type": "code",
+      "source_file": "frontend/App.h5.vue",
+      "source_location": "L1",
+      "id": "frontend_app_h5_vue",
+      "community": 3,
+      "norm_label": "app.h5.vue"
+    },
+    {
+      "label": "vite.config.h5.js",
+      "file_type": "code",
+      "source_file": "frontend/vite.config.h5.js",
+      "source_location": "L1",
+      "id": "frontend_vite_config_h5_js",
+      "community": 12,
+      "norm_label": "vite.config.h5.js"
+    },
+    {
+      "label": "vite.config.js",
+      "file_type": "code",
+      "source_file": "frontend/vite.config.js",
+      "source_location": "L1",
+      "id": "frontend_vite_config_js",
+      "community": 14,
+      "norm_label": "vite.config.js"
+    },
+    {
+      "label": "App.vue",
+      "file_type": "code",
+      "source_file": "frontend/App.vue",
+      "source_location": "L1",
+      "id": "frontend_app_vue",
+      "community": 13,
+      "norm_label": "app.vue"
+    },
+    {
+      "label": "main.js",
+      "file_type": "code",
+      "source_file": "frontend/main.js",
+      "source_location": "L1",
+      "id": "frontend_main_js",
+      "community": 13,
+      "norm_label": "main.js"
+    },
+    {
+      "label": "createApp()",
+      "file_type": "code",
+      "source_file": "frontend/main.js",
+      "source_location": "L4",
+      "id": "frontend_main_createapp",
+      "community": 13,
+      "norm_label": "createapp()"
+    },
+    {
+      "label": "card-detail.vue",
+      "file_type": "code",
+      "source_file": "frontend/pages/card-detail/card-detail.vue",
+      "source_location": "L1",
+      "id": "frontend_pages_card_detail_card_detail_vue",
+      "community": 11,
+      "norm_label": "card-detail.vue"
+    },
+    {
+      "label": "{ path, query }",
+      "file_type": "code",
+      "source_file": "frontend/pages/card-detail/card-detail.vue",
+      "source_location": "L109",
+      "id": "card_detail_card_detail_path_query",
+      "community": 11,
+      "norm_label": "{ path, query }"
+    },
+    {
+      "label": "match",
+      "file_type": "code",
+      "source_file": "frontend/pages/card-detail/card-detail.vue",
+      "source_location": "L110",
+      "id": "card_detail_card_detail_match",
+      "community": 11,
+      "norm_label": "match"
+    },
+    {
+      "label": "options",
+      "file_type": "code",
+      "source_file": "frontend/pages/card-detail/card-detail.vue",
+      "source_location": "L117",
+      "id": "card_detail_card_detail_options",
+      "community": 11,
+      "norm_label": "options"
+    },
+    {
+      "label": "foundCard",
+      "file_type": "code",
+      "source_file": "frontend/pages/card-detail/card-detail.vue",
+      "source_location": "L125",
+      "id": "card_detail_card_detail_foundcard",
+      "community": 11,
+      "norm_label": "foundcard"
+    },
+    {
+      "label": "index.vue",
+      "file_type": "code",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L1",
+      "id": "frontend_pages_index_index_vue",
+      "community": 6,
+      "norm_label": "index.vue"
+    },
+    {
+      "label": "spreads",
+      "file_type": "code",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L78",
+      "id": "index_index_spreads",
+      "community": 6,
+      "norm_label": "spreads"
+    },
+    {
+      "label": "selectedSpread",
+      "file_type": "code",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L79",
+      "id": "index_index_selectedspread",
+      "community": 6,
+      "norm_label": "selectedspread"
+    },
+    {
+      "label": "question",
+      "file_type": "code",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L80",
+      "id": "index_index_question",
+      "community": 6,
+      "norm_label": "question"
+    },
+    {
+      "label": "userInfo",
+      "file_type": "code",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L81",
+      "id": "index_index_userinfo",
+      "community": 6,
+      "norm_label": "userinfo"
+    },
+    {
+      "label": "storedUser",
+      "file_type": "code",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L85",
+      "id": "index_index_storeduser",
+      "community": 6,
+      "norm_label": "storeduser"
+    },
+    {
+      "label": "goToLogin()",
+      "file_type": "code",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L91",
+      "id": "index_index_gotologin",
+      "community": 6,
+      "norm_label": "gotologin()"
+    },
+    {
+      "label": "selectSpread()",
+      "file_type": "code",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L97",
+      "id": "index_index_selectspread",
+      "community": 6,
+      "norm_label": "selectspread()"
+    },
+    {
+      "label": "goToDaily()",
+      "file_type": "code",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L101",
+      "id": "index_index_gotodaily",
+      "community": 6,
+      "norm_label": "gotodaily()"
+    },
+    {
+      "label": "browseCards()",
+      "file_type": "code",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L105",
+      "id": "index_index_browsecards",
+      "community": 6,
+      "norm_label": "browsecards()"
+    },
+    {
+      "label": "startReading()",
+      "file_type": "code",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L109",
+      "id": "index_index_startreading",
+      "community": 6,
+      "norm_label": "startreading()"
+    },
+    {
+      "label": "login.vue",
+      "file_type": "code",
+      "source_file": "frontend/pages/login/login.vue",
+      "source_location": "L1",
+      "id": "frontend_pages_login_login_vue",
+      "community": 3,
+      "norm_label": "login.vue"
+    },
+    {
+      "label": "handleLogin()",
+      "file_type": "code",
+      "source_file": "frontend/pages/login/login.vue",
+      "source_location": "L37",
+      "id": "login_login_handlelogin",
+      "community": 3,
+      "norm_label": "handlelogin()"
+    },
+    {
+      "label": "skipLogin()",
+      "file_type": "code",
+      "source_file": "frontend/pages/login/login.vue",
+      "source_location": "L99",
+      "id": "login_login_skiplogin",
+      "community": 3,
+      "norm_label": "skiplogin()"
+    },
+    {
+      "label": "daily.vue",
+      "file_type": "code",
+      "source_file": "frontend/pages/daily/daily.vue",
+      "source_location": "L1",
+      "id": "frontend_pages_daily_daily_vue",
+      "community": 3,
+      "norm_label": "daily.vue"
+    },
+    {
+      "label": "history.vue",
+      "file_type": "code",
+      "source_file": "frontend/pages/history/history.vue",
+      "source_location": "L1",
+      "id": "frontend_pages_history_history_vue",
+      "community": 3,
+      "norm_label": "history.vue"
+    },
+    {
+      "label": "result.vue",
+      "file_type": "code",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L1",
+      "id": "frontend_pages_result_result_vue",
+      "community": 4,
+      "norm_label": "result.vue"
+    },
+    {
+      "label": "getQueryParam()",
+      "file_type": "code",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L95",
+      "id": "result_result_getqueryparam",
+      "community": 4,
+      "norm_label": "getqueryparam()"
+    },
+    {
+      "label": "options",
+      "file_type": "code",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L114",
+      "id": "result_result_options",
+      "community": 4,
+      "norm_label": "options"
+    },
+    {
+      "label": "config",
+      "file_type": "code",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L118",
+      "id": "result_result_config",
+      "community": 4,
+      "norm_label": "config"
+    },
+    {
+      "label": "formatTime()",
+      "file_type": "code",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L128",
+      "id": "result_result_formattime",
+      "community": 4,
+      "norm_label": "formattime()"
+    },
+    {
+      "label": "getKeywords()",
+      "file_type": "code",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L134",
+      "id": "result_result_getkeywords",
+      "community": 4,
+      "norm_label": "getkeywords()"
+    },
+    {
+      "label": "getInterpretation()",
+      "file_type": "code",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L140",
+      "id": "result_result_getinterpretation",
+      "community": 4,
+      "norm_label": "getinterpretation()"
+    },
+    {
+      "label": "formatInterpretation()",
+      "file_type": "code",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L167",
+      "id": "result_result_formatinterpretation",
+      "community": 4,
+      "norm_label": "formatinterpretation()"
+    },
+    {
+      "label": "shareResult()",
+      "file_type": "code",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L188",
+      "id": "result_result_shareresult",
+      "community": 4,
+      "norm_label": "shareresult()"
+    },
+    {
+      "label": "drawAgain()",
+      "file_type": "code",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L201",
+      "id": "result_result_drawagain",
+      "community": 4,
+      "norm_label": "drawagain()"
+    },
+    {
+      "label": "draw.vue",
+      "file_type": "code",
+      "source_file": "frontend/pages/draw/draw.vue",
+      "source_location": "L1",
+      "id": "frontend_pages_draw_draw_vue",
+      "community": 3,
+      "norm_label": "draw.vue"
+    },
+    {
+      "label": "tarot-data.js",
+      "file_type": "code",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L1",
+      "id": "frontend_data_tarot_data_js",
+      "community": 1,
+      "norm_label": "tarot-data.js"
+    },
+    {
+      "label": "MAJOR_ARCANA",
+      "file_type": "code",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L4",
+      "id": "data_tarot_data_major_arcana",
+      "community": 1,
+      "norm_label": "major_arcana"
+    },
+    {
+      "label": "WANDS",
+      "file_type": "code",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L316",
+      "id": "data_tarot_data_wands",
+      "community": 1,
+      "norm_label": "wands"
+    },
+    {
+      "label": "CUPS",
+      "file_type": "code",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L334",
+      "id": "data_tarot_data_cups",
+      "community": 1,
+      "norm_label": "cups"
+    },
+    {
+      "label": "SWORDS",
+      "file_type": "code",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L352",
+      "id": "data_tarot_data_swords",
+      "community": 1,
+      "norm_label": "swords"
+    },
+    {
+      "label": "PENTACLES",
+      "file_type": "code",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L370",
+      "id": "data_tarot_data_pentacles",
+      "community": 1,
+      "norm_label": "pentacles"
+    },
+    {
+      "label": "TAROT_DECK",
+      "file_type": "code",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L388",
+      "id": "data_tarot_data_tarot_deck",
+      "community": 1,
+      "norm_label": "tarot_deck"
+    },
+    {
+      "label": "SPREADS",
+      "file_type": "code",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L397",
+      "id": "data_tarot_data_spreads",
+      "community": 1,
+      "norm_label": "spreads"
+    },
+    {
+      "label": "drawCards()",
+      "file_type": "code",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L480",
+      "id": "data_tarot_data_drawcards",
+      "community": 1,
+      "norm_label": "drawcards()"
+    },
+    {
+      "label": "simulateShuffle()",
+      "file_type": "code",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L499",
+      "id": "data_tarot_data_simulateshuffle",
+      "community": 1,
+      "norm_label": "simulateshuffle()"
+    },
+    {
+      "label": "daily.js",
+      "file_type": "code",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L1",
+      "id": "frontend_utils_daily_js",
+      "community": 7,
+      "norm_label": "daily.js"
+    },
+    {
+      "label": "hasDrawnToday()",
+      "file_type": "code",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L11",
+      "id": "utils_daily_hasdrawntoday",
+      "community": 7,
+      "norm_label": "hasdrawntoday()"
+    },
+    {
+      "label": "getTodayString()",
+      "file_type": "code",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L26",
+      "id": "utils_daily_gettodaystring",
+      "community": 7,
+      "norm_label": "gettodaystring()"
+    },
+    {
+      "label": "drawDailyCard()",
+      "file_type": "code",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L34",
+      "id": "utils_daily_drawdailycard",
+      "community": 7,
+      "norm_label": "drawdailycard()"
+    },
+    {
+      "label": "getTodayCard()",
+      "file_type": "code",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L68",
+      "id": "utils_daily_gettodaycard",
+      "community": 7,
+      "norm_label": "gettodaycard()"
+    },
+    {
+      "label": "getDailyHistory()",
+      "file_type": "code",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L86",
+      "id": "utils_daily_getdailyhistory",
+      "community": 7,
+      "norm_label": "getdailyhistory()"
+    },
+    {
+      "label": "saveToHistory()",
+      "file_type": "code",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L94",
+      "id": "utils_daily_savetohistory",
+      "community": 7,
+      "norm_label": "savetohistory()"
+    },
+    {
+      "label": "hashString()",
+      "file_type": "code",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L118",
+      "id": "utils_daily_hashstring",
+      "community": 7,
+      "norm_label": "hashstring()"
+    },
+    {
+      "label": "getUserIdentifier()",
+      "file_type": "code",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L131",
+      "id": "utils_daily_getuseridentifier",
+      "community": 7,
+      "norm_label": "getuseridentifier()"
+    },
+    {
+      "label": "generateDailyGuidance()",
+      "file_type": "code",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L144",
+      "id": "utils_daily_generatedailyguidance",
+      "community": 7,
+      "norm_label": "generatedailyguidance()"
+    },
+    {
+      "label": "tarot.js",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L1",
+      "id": "frontend_utils_tarot_js",
+      "community": 1,
+      "norm_label": "tarot.js"
+    },
+    {
+      "label": "shuffleDeck()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L8",
+      "id": "utils_tarot_shuffledeck",
+      "community": 1,
+      "norm_label": "shuffledeck()"
+    },
+    {
+      "label": "drawCards()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L23",
+      "id": "utils_tarot_drawcards",
+      "community": 1,
+      "norm_label": "drawcards()"
+    },
+    {
+      "label": "drawSpread()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L39",
+      "id": "utils_tarot_drawspread",
+      "community": 1,
+      "norm_label": "drawspread()"
+    },
+    {
+      "label": "getCardMeaning()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L61",
+      "id": "utils_tarot_getcardmeaning",
+      "community": 1,
+      "norm_label": "getcardmeaning()"
+    },
+    {
+      "label": "getCardKeywords()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L71",
+      "id": "utils_tarot_getcardkeywords",
+      "community": 1,
+      "norm_label": "getcardkeywords()"
+    },
+    {
+      "label": "saveReading()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L83",
+      "id": "utils_tarot_savereading",
+      "community": 1,
+      "norm_label": "savereading()"
+    },
+    {
+      "label": "getReadings()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L100",
+      "id": "utils_tarot_getreadings",
+      "community": 1,
+      "norm_label": "getreadings()"
+    },
+    {
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L108",
+      "id": "utils_tarot_formatdate",
+      "community": 1,
+      "norm_label": "formatdate()"
+    },
+    {
+      "label": "getCardImage()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L130",
+      "id": "utils_tarot_getcardimage",
+      "community": 1,
+      "norm_label": "getcardimage()"
+    },
+    {
+      "label": "getCardBackImage()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L140",
+      "id": "utils_tarot_getcardbackimage",
+      "community": 1,
+      "norm_label": "getcardbackimage()"
+    },
+    {
+      "label": "generateReadingText()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L147",
+      "id": "utils_tarot_generatereadingtext",
+      "community": 1,
+      "norm_label": "generatereadingtext()"
+    },
+    {
+      "label": "simulateShufflingAnimation()",
+      "file_type": "code",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L167",
+      "id": "utils_tarot_simulateshufflinganimation",
+      "community": 1,
+      "norm_label": "simulateshufflinganimation()"
+    },
+    {
+      "label": "ai.js",
+      "file_type": "code",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L1",
+      "id": "frontend_utils_ai_js",
+      "community": 4,
+      "norm_label": "ai.js"
+    },
+    {
+      "label": "getBaseURL()",
+      "file_type": "code",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L5",
+      "id": "utils_ai_getbaseurl",
+      "community": 4,
+      "norm_label": "getbaseurl()"
+    },
+    {
+      "label": "getAuthToken()",
+      "file_type": "code",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L19",
+      "id": "utils_ai_getauthtoken",
+      "community": 4,
+      "norm_label": "getauthtoken()"
+    },
+    {
+      "label": "buildHeaders()",
+      "file_type": "code",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L31",
+      "id": "utils_ai_buildheaders",
+      "community": 4,
+      "norm_label": "buildheaders()"
+    },
+    {
+      "label": "getAIInterpretation()",
+      "file_type": "code",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L49",
+      "id": "utils_ai_getaiinterpretation",
+      "community": 4,
+      "norm_label": "getaiinterpretation()"
+    },
+    {
+      "label": "saveApiConfig()",
+      "file_type": "code",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L100",
+      "id": "utils_ai_saveapiconfig",
+      "community": 4,
+      "norm_label": "saveapiconfig()"
+    },
+    {
+      "label": "getApiConfig()",
+      "file_type": "code",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L107",
+      "id": "utils_ai_getapiconfig",
+      "community": 4,
+      "norm_label": "getapiconfig()"
+    },
+    {
+      "label": "getQuickInterpretation()",
+      "file_type": "code",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L114",
+      "id": "utils_ai_getquickinterpretation",
+      "community": 4,
+      "norm_label": "getquickinterpretation()"
+    },
+    {
+      "label": "server.js",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L1",
+      "id": "backend_server_js",
+      "community": 0,
+      "norm_label": "server.js"
+    },
+    {
+      "label": "express",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L1",
+      "id": "backend_server_express",
+      "community": 0,
+      "norm_label": "express"
+    },
+    {
+      "label": "cors",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L2",
+      "id": "backend_server_cors",
+      "community": 0,
+      "norm_label": "cors"
+    },
+    {
+      "label": "bcrypt",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L3",
+      "id": "backend_server_bcrypt",
+      "community": 0,
+      "norm_label": "bcrypt"
+    },
+    {
+      "label": "jwt",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L4",
+      "id": "backend_server_jwt",
+      "community": 0,
+      "norm_label": "jwt"
+    },
+    {
+      "label": "sqlite3",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L5",
+      "id": "backend_server_sqlite3",
+      "community": 0,
+      "norm_label": "sqlite3"
+    },
+    {
+      "label": "axios",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L6",
+      "id": "backend_server_axios",
+      "community": 0,
+      "norm_label": "axios"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L7",
+      "id": "backend_server_path",
+      "community": 0,
+      "norm_label": "path"
+    },
+    {
+      "label": "rateLimit",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L8",
+      "id": "backend_server_ratelimit",
+      "community": 0,
+      "norm_label": "ratelimit"
+    },
+    {
+      "label": "Joi",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L9",
+      "id": "backend_server_joi",
+      "community": 0,
+      "norm_label": "joi"
+    },
+    {
+      "label": "app",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L12",
+      "id": "backend_server_app",
+      "community": 0,
+      "norm_label": "app"
+    },
+    {
+      "label": "ALLOWED_ORIGINS",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L30",
+      "id": "backend_server_allowed_origins",
+      "community": 0,
+      "norm_label": "allowed_origins"
+    },
+    {
+      "label": "corsOptions",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L41",
+      "id": "backend_server_corsoptions",
+      "community": 0,
+      "norm_label": "corsoptions"
+    },
+    {
+      "label": "apiLimiter",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L59",
+      "id": "backend_server_apilimiter",
+      "community": 0,
+      "norm_label": "apilimiter"
+    },
+    {
+      "label": "aiLimiter",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L67",
+      "id": "backend_server_ailimiter",
+      "community": 0,
+      "norm_label": "ailimiter"
+    },
+    {
+      "label": "schemas",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L77",
+      "id": "backend_server_schemas",
+      "community": 0,
+      "norm_label": "schemas"
+    },
+    {
+      "label": "validate()",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L116",
+      "id": "backend_server_validate",
+      "community": 0,
+      "norm_label": "validate()"
+    },
+    {
+      "label": "db",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L129",
+      "id": "backend_server_db",
+      "community": 0,
+      "norm_label": "db"
+    },
+    {
+      "label": "authMiddleware()",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L154",
+      "id": "backend_server_authmiddleware",
+      "community": 0,
+      "norm_label": "authmiddleware()"
+    },
+    {
+      "label": "optionalAuthMiddleware()",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L171",
+      "id": "backend_server_optionalauthmiddleware",
+      "community": 0,
+      "norm_label": "optionalauthmiddleware()"
+    },
+    {
+      "label": "token",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L205",
+      "id": "backend_server_token",
+      "community": 0,
+      "norm_label": "token"
+    },
+    {
+      "label": "limit",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L299",
+      "id": "backend_server_limit",
+      "community": 0,
+      "norm_label": "limit"
+    },
+    {
+      "label": "readings",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L313",
+      "id": "backend_server_readings",
+      "community": 0,
+      "norm_label": "readings"
+    },
+    {
+      "label": "prompt",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L367",
+      "id": "backend_server_prompt",
+      "community": 0,
+      "norm_label": "prompt"
+    },
+    {
+      "label": "sanitizeUserInput()",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L377",
+      "id": "backend_server_sanitizeuserinput",
+      "community": 0,
+      "norm_label": "sanitizeuserinput()"
+    },
+    {
+      "label": "buildAIPrompt()",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L389",
+      "id": "backend_server_buildaiprompt",
+      "community": 0,
+      "norm_label": "buildaiprompt()"
+    },
+    {
+      "label": "callAIWithFallback()",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L428",
+      "id": "backend_server_callaiwithfallback",
+      "community": 0,
+      "norm_label": "callaiwithfallback()"
+    },
+    {
+      "label": "callOpenAI()",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L457",
+      "id": "backend_server_callopenai",
+      "community": 0,
+      "norm_label": "callopenai()"
+    },
+    {
+      "label": "callKimi()",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L481",
+      "id": "backend_server_callkimi",
+      "community": 0,
+      "norm_label": "callkimi()"
+    },
+    {
+      "label": "callAliyun()",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L505",
+      "id": "backend_server_callaliyun",
+      "community": 0,
+      "norm_label": "callaliyun()"
+    },
+    {
+      "label": "callPollinations()",
+      "file_type": "code",
+      "source_file": "backend/server.js",
+      "source_location": "L530",
+      "id": "backend_server_callpollinations",
+      "community": 0,
+      "norm_label": "callpollinations()"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "readme_md",
+      "community": 5,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "\u5854\u7f57\u68a6\u8bed (Tarot Dream)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "tarot_app_readme_tarot_dream",
+      "community": 5,
+      "norm_label": "\u5854\u7f57\u68a6\u8bed (tarot dream)"
+    },
+    {
+      "label": "\u9879\u76ee\u7ed3\u6784",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "id": "tarot_app_readme",
+      "community": 5,
+      "norm_label": "\u9879\u76ee\u7ed3\u6784"
+    },
+    {
+      "label": "code:block1 (\u251c\u2500\u2500 frontend/          # uni-app \u524d\u7aef (H5 + \u5fae\u4fe1\u5c0f\u7a0b\u5e8f))",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L7",
+      "id": "tarot_app_readme_codeblock_1",
+      "community": 5,
+      "norm_label": "code:block1 (\u251c\u2500\u2500 frontend/          # uni-app \u524d\u7aef (h5 + \u5fae\u4fe1\u5c0f\u7a0b\u5e8f))"
+    },
+    {
+      "label": "\u6280\u672f\u6808",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L20",
+      "id": "tarot_app_readme_20",
+      "community": 5,
+      "norm_label": "\u6280\u672f\u6808"
+    },
+    {
+      "label": "\u5feb\u901f\u5f00\u59cb",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L27",
+      "id": "tarot_app_readme_27",
+      "community": 5,
+      "norm_label": "\u5feb\u901f\u5f00\u59cb"
+    },
+    {
+      "label": "\u524d\u7aef",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L29",
+      "id": "tarot_app_readme_29",
+      "community": 5,
+      "norm_label": "\u524d\u7aef"
+    },
+    {
+      "label": "code:bash (cd frontend)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L31",
+      "id": "tarot_app_readme_codeblock_2",
+      "community": 5,
+      "norm_label": "code:bash (cd frontend)"
+    },
+    {
+      "label": "\u540e\u7aef",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L39",
+      "id": "tarot_app_readme_39",
+      "community": 5,
+      "norm_label": "\u540e\u7aef"
+    },
+    {
+      "label": "code:bash (cd backend)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "id": "tarot_app_readme_codeblock_3",
+      "community": 5,
+      "norm_label": "code:bash (cd backend)"
+    },
+    {
+      "label": "\u73af\u5883\u53d8\u91cf",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L48",
+      "id": "tarot_app_readme_48",
+      "community": 5,
+      "norm_label": "\u73af\u5883\u53d8\u91cf"
+    },
+    {
+      "label": "\u90e8\u7f72",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L59",
+      "id": "tarot_app_readme_59",
+      "community": 5,
+      "norm_label": "\u90e8\u7f72"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L1",
+      "id": "frontend_readme_md",
+      "community": 2,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "\ud83d\udd2e \u5854\u7f57\u724c\u5c0f\u7a0b\u5e8f",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L1",
+      "id": "frontend_readme",
+      "community": 2,
+      "norm_label": "\ud83d\udd2e \u5854\u7f57\u724c\u5c0f\u7a0b\u5e8f"
+    },
+    {
+      "label": "\u2705 \u529f\u80fd\u7279\u6027",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L5",
+      "id": "frontend_readme_5",
+      "community": 2,
+      "norm_label": "\u2705 \u529f\u80fd\u7279\u6027"
+    },
+    {
+      "label": "\u6838\u5fc3\u529f\u80fd",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L7",
+      "id": "frontend_readme_7",
+      "community": 2,
+      "norm_label": "\u6838\u5fc3\u529f\u80fd"
+    },
+    {
+      "label": "AI \u667a\u80fd\u89e3\u8bfb",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L17",
+      "id": "frontend_readme_ai",
+      "community": 2,
+      "norm_label": "ai \u667a\u80fd\u89e3\u8bfb"
+    },
+    {
+      "label": "\u6bcf\u65e5\u4e00\u62bd",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L23",
+      "id": "frontend_readme_23",
+      "community": 2,
+      "norm_label": "\u6bcf\u65e5\u4e00\u62bd"
+    },
+    {
+      "label": "\u724c\u610f\u8be6\u89e3",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L29",
+      "id": "frontend_readme_29",
+      "community": 2,
+      "norm_label": "\u724c\u610f\u8be6\u89e3"
+    },
+    {
+      "label": "\u4f53\u9a8c\u4f18\u5316",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L35",
+      "id": "frontend_readme_35",
+      "community": 2,
+      "norm_label": "\u4f53\u9a8c\u4f18\u5316"
+    },
+    {
+      "label": "\u5176\u4ed6\u529f\u80fd",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L42",
+      "id": "frontend_readme_42",
+      "community": 2,
+      "norm_label": "\u5176\u4ed6\u529f\u80fd"
+    },
+    {
+      "label": "\ud83d\ude80 \u6280\u672f\u6808",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L48",
+      "id": "frontend_readme_48",
+      "community": 2,
+      "norm_label": "\ud83d\ude80 \u6280\u672f\u6808"
+    },
+    {
+      "label": "\ud83d\udce4 \u9879\u76ee\u7ed3\u6784",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L57",
+      "id": "frontend_readme_57",
+      "community": 2,
+      "norm_label": "\ud83d\udce4 \u9879\u76ee\u7ed3\u6784"
+    },
+    {
+      "label": "code:block1 (tarot-app/)",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L59",
+      "id": "frontend_readme_codeblock_1",
+      "community": 2,
+      "norm_label": "code:block1 (tarot-app/)"
+    },
+    {
+      "label": "\ud83c\udf10 \u8fd0\u884c",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L79",
+      "id": "frontend_readme_79",
+      "community": 2,
+      "norm_label": "\ud83c\udf10 \u8fd0\u884c"
+    },
+    {
+      "label": "code:bash (# \u5b89\u88c5\u4f9d\u8d56)",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L81",
+      "id": "frontend_readme_codeblock_2",
+      "community": 2,
+      "norm_label": "code:bash (# \u5b89\u88c5\u4f9d\u8d56)"
+    },
+    {
+      "label": "\ud83d\udcd6 \u4f7f\u7528\u8bf4\u660e",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L95",
+      "id": "frontend_readme_95",
+      "community": 2,
+      "norm_label": "\ud83d\udcd6 \u4f7f\u7528\u8bf4\u660e"
+    },
+    {
+      "label": "1. \u5feb\u901f\u5f00\u59cb",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L97",
+      "id": "frontend_readme_1",
+      "community": 2,
+      "norm_label": "1. \u5feb\u901f\u5f00\u59cb"
+    },
+    {
+      "label": "2. \u914d\u7f6e AI \u89e3\u8bfb",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L104",
+      "id": "frontend_readme_2_ai",
+      "community": 2,
+      "norm_label": "2. \u914d\u7f6e ai \u89e3\u8bfb"
+    },
+    {
+      "label": "3. \u6bcf\u65e5\u4e00\u62bd",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L110",
+      "id": "frontend_readme_3",
+      "community": 2,
+      "norm_label": "3. \u6bcf\u65e5\u4e00\u62bd"
+    },
+    {
+      "label": "\ud83c\udfa8 \u724c\u9762\u56fe\u7247",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L116",
+      "id": "frontend_readme_116",
+      "community": 2,
+      "norm_label": "\ud83c\udfa8 \u724c\u9762\u56fe\u7247"
+    },
+    {
+      "label": "code:block3 (static/images/cards/)",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L120",
+      "id": "frontend_readme_codeblock_3",
+      "community": 2,
+      "norm_label": "code:block3 (static/images/cards/)"
+    },
+    {
+      "label": "\ud83d\udcdd \u724c\u9635\u8bf4\u660e",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L136",
+      "id": "frontend_readme_136",
+      "community": 2,
+      "norm_label": "\ud83d\udcdd \u724c\u9635\u8bf4\u660e"
+    },
+    {
+      "label": "\ud83d\udee0 \u5f00\u53d1\u8ba1\u5212",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L147",
+      "id": "frontend_readme_147",
+      "community": 2,
+      "norm_label": "\ud83d\udee0 \u5f00\u53d1\u8ba1\u5212"
+    },
+    {
+      "label": "\ud83d\udcd6 \u8bb8\u53ef\u8bc1",
+      "file_type": "document",
+      "source_file": "frontend/README.md",
+      "source_location": "L160",
+      "id": "frontend_readme_160",
+      "community": 2,
+      "norm_label": "\ud83d\udcd6 \u8bb8\u53ef\u8bc1"
+    },
+    {
+      "label": "TEST_CASES.md",
+      "file_type": "document",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L1",
+      "id": "frontend_test_cases_md",
+      "community": 10,
+      "norm_label": "test_cases.md"
+    },
+    {
+      "label": "\u5854\u7f57\u724c\u5c0f\u7a0b\u5e8f H5 \u6d4b\u8bd5\u7528\u4f8b",
+      "file_type": "document",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L1",
+      "id": "frontend_test_cases_h5",
+      "community": 10,
+      "norm_label": "\u5854\u7f57\u724c\u5c0f\u7a0b\u5e8f h5 \u6d4b\u8bd5\u7528\u4f8b"
+    },
+    {
+      "label": "\u4e00\u3001\u9875\u9762\u8bbf\u95ee\u4e0e\u52a0\u8f7d",
+      "file_type": "document",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L3",
+      "id": "frontend_test_cases",
+      "community": 10,
+      "norm_label": "\u4e00\u3001\u9875\u9762\u8bbf\u95ee\u4e0e\u52a0\u8f7d"
+    },
+    {
+      "label": "\u4e8c\u3001\u8def\u7531\u8df3\u8f6c\u4e0e\u5bfc\u822a",
+      "file_type": "document",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L9",
+      "id": "frontend_test_cases_9",
+      "community": 10,
+      "norm_label": "\u4e8c\u3001\u8def\u7531\u8df3\u8f6c\u4e0e\u5bfc\u822a"
+    },
+    {
+      "label": "\u4e09\u3001\u56fe\u7247\u8d44\u6e90\u52a0\u8f7d",
+      "file_type": "document",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L24",
+      "id": "frontend_test_cases_24",
+      "community": 10,
+      "norm_label": "\u4e09\u3001\u56fe\u7247\u8d44\u6e90\u52a0\u8f7d"
+    },
+    {
+      "label": "\u56db\u3001\u6838\u5fc3\u529f\u80fd",
+      "file_type": "document",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L33",
+      "id": "frontend_test_cases_33",
+      "community": 10,
+      "norm_label": "\u56db\u3001\u6838\u5fc3\u529f\u80fd"
+    },
+    {
+      "label": "\u4e94\u3001\u767b\u5f55\u4e0e\u7528\u6237",
+      "file_type": "document",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L44",
+      "id": "frontend_test_cases_44",
+      "community": 10,
+      "norm_label": "\u4e94\u3001\u767b\u5f55\u4e0e\u7528\u6237"
+    },
+    {
+      "label": "\u516d\u3001\u540e\u7aef\u670d\u52a1",
+      "file_type": "document",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L50",
+      "id": "frontend_test_cases_50",
+      "community": 10,
+      "norm_label": "\u516d\u3001\u540e\u7aef\u670d\u52a1"
+    },
+    {
+      "label": "TEST_RESULTS.md",
+      "file_type": "document",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L1",
+      "id": "frontend_test_results_md",
+      "community": 8,
+      "norm_label": "test_results.md"
+    },
+    {
+      "label": "\u5854\u7f57\u724c\u5c0f\u7a0b\u5e8f H5 \u6d4b\u8bd5\u7ed3\u679c",
+      "file_type": "document",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L1",
+      "id": "frontend_test_results_h5",
+      "community": 8,
+      "norm_label": "\u5854\u7f57\u724c\u5c0f\u7a0b\u5e8f h5 \u6d4b\u8bd5\u7ed3\u679c"
+    },
+    {
+      "label": "\u6d4b\u8bd5\u73af\u5883",
+      "file_type": "document",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L3",
+      "id": "frontend_test_results",
+      "community": 8,
+      "norm_label": "\u6d4b\u8bd5\u73af\u5883"
+    },
+    {
+      "label": "\u6d4b\u8bd5\u7ed3\u679c",
+      "file_type": "document",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L8",
+      "id": "frontend_test_results_8",
+      "community": 8,
+      "norm_label": "\u6d4b\u8bd5\u7ed3\u679c"
+    },
+    {
+      "label": "\u4e00\u3001\u9875\u9762\u8bbf\u95ee\u4e0e\u52a0\u8f7d",
+      "file_type": "document",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L10",
+      "id": "frontend_test_results_10",
+      "community": 8,
+      "norm_label": "\u4e00\u3001\u9875\u9762\u8bbf\u95ee\u4e0e\u52a0\u8f7d"
+    },
+    {
+      "label": "\u4e8c\u3001\u8def\u7531\u8df3\u8f6c",
+      "file_type": "document",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L17",
+      "id": "frontend_test_results_17",
+      "community": 8,
+      "norm_label": "\u4e8c\u3001\u8def\u7531\u8df3\u8f6c"
+    },
+    {
+      "label": "\u4e09\u3001\u56fe\u7247\u8d44\u6e90",
+      "file_type": "document",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L28",
+      "id": "frontend_test_results_28",
+      "community": 8,
+      "norm_label": "\u4e09\u3001\u56fe\u7247\u8d44\u6e90"
+    },
+    {
+      "label": "\u56db\u3001\u6838\u5fc3\u529f\u80fd",
+      "file_type": "document",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L35",
+      "id": "frontend_test_results_35",
+      "community": 8,
+      "norm_label": "\u56db\u3001\u6838\u5fc3\u529f\u80fd"
+    },
+    {
+      "label": "\u4e94\u3001\u540e\u7aef\u670d\u52a1",
+      "file_type": "document",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L45",
+      "id": "frontend_test_results_45",
+      "community": 8,
+      "norm_label": "\u4e94\u3001\u540e\u7aef\u670d\u52a1"
+    },
+    {
+      "label": "\u4ecd\u5b58\u5728\u7684\u95ee\u9898",
+      "file_type": "document",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L52",
+      "id": "frontend_test_results_52",
+      "community": 8,
+      "norm_label": "\u4ecd\u5b58\u5728\u7684\u95ee\u9898"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/vite-rpx-plugin.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "frontend_vite_rpx_plugin_js",
+      "target": "frontend_vite_rpx_plugin_rpxtopxplugin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/vite.config.h5.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_vite_config_h5_js",
+      "target": "frontend_vite_rpx_plugin_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_uni_app_mock_js",
+      "target": "frontend_uni_app_mock_onload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "frontend_uni_app_mock_js",
+      "target": "frontend_uni_app_mock_onready",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "frontend_uni_app_mock_js",
+      "target": "frontend_uni_app_mock_onunload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "frontend_uni_app_mock_js",
+      "target": "frontend_uni_app_mock_onshow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "frontend_uni_app_mock_js",
+      "target": "frontend_uni_app_mock_onhide",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "frontend_uni_app_mock_js",
+      "target": "frontend_uni_app_mock_onpulldownrefresh",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "frontend_uni_app_mock_js",
+      "target": "frontend_uni_app_mock_onreachbottom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/uni-app-mock.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "frontend_uni_app_mock_js",
+      "target": "frontend_uni_app_mock_onshareappmessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_app_h5_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_pages_index_index_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_pages_daily_daily_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_pages_draw_draw_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_pages_result_result_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_pages_history_history_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_pages_card_detail_card_detail_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_pages_login_login_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_routes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_router",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_converturl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_showtoastui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_raw",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L146",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L121",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_deviceid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L170",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_controller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L171",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_timer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L173",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_fetchoptions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L185",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_params",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L191",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_p",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.h5.js",
+      "source_location": "L223",
+      "weight": 1.0,
+      "source": "frontend_main_h5_js",
+      "target": "frontend_main_h5_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "frontend_main_js",
+      "target": "frontend_app_vue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/main.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_main_js",
+      "target": "frontend_main_createapp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/card-detail/card-detail.vue",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "frontend_pages_card_detail_card_detail_vue",
+      "target": "card_detail_card_detail_path_query",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/card-detail/card-detail.vue",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "frontend_pages_card_detail_card_detail_vue",
+      "target": "card_detail_card_detail_match",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/card-detail/card-detail.vue",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "frontend_pages_card_detail_card_detail_vue",
+      "target": "card_detail_card_detail_options",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/card-detail/card-detail.vue",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "frontend_pages_card_detail_card_detail_vue",
+      "target": "card_detail_card_detail_foundcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "frontend_pages_index_index_vue",
+      "target": "index_index_spreads",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "frontend_pages_index_index_vue",
+      "target": "index_index_selectedspread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "frontend_pages_index_index_vue",
+      "target": "index_index_question",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "frontend_pages_index_index_vue",
+      "target": "index_index_userinfo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "frontend_pages_index_index_vue",
+      "target": "index_index_storeduser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "frontend_pages_index_index_vue",
+      "target": "index_index_gotologin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "frontend_pages_index_index_vue",
+      "target": "index_index_selectspread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "frontend_pages_index_index_vue",
+      "target": "index_index_gotodaily",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "frontend_pages_index_index_vue",
+      "target": "index_index_browsecards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/index/index.vue",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "frontend_pages_index_index_vue",
+      "target": "index_index_startreading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/login/login.vue",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "frontend_pages_login_login_vue",
+      "target": "login_login_handlelogin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/login/login.vue",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "frontend_pages_login_login_vue",
+      "target": "login_login_skiplogin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "frontend/pages/login/login.vue",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "login_login_handlelogin",
+      "target": "utils_ai_getbaseurl"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "frontend_pages_result_result_vue",
+      "target": "result_result_getqueryparam",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "frontend_pages_result_result_vue",
+      "target": "result_result_options",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "frontend_pages_result_result_vue",
+      "target": "result_result_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "frontend_pages_result_result_vue",
+      "target": "result_result_formattime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "frontend_pages_result_result_vue",
+      "target": "result_result_getkeywords",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "frontend_pages_result_result_vue",
+      "target": "result_result_getinterpretation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L167",
+      "weight": 1.0,
+      "source": "frontend_pages_result_result_vue",
+      "target": "result_result_formatinterpretation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L188",
+      "weight": 1.0,
+      "source": "frontend_pages_result_result_vue",
+      "target": "result_result_shareresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L201",
+      "weight": 1.0,
+      "source": "frontend_pages_result_result_vue",
+      "target": "result_result_drawagain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "result_result_getinterpretation",
+      "target": "utils_ai_getaiinterpretation"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "frontend/pages/result/result.vue",
+      "source_location": "L155",
+      "weight": 1.0,
+      "source": "result_result_getinterpretation",
+      "target": "utils_ai_getquickinterpretation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_data_tarot_data_js",
+      "target": "data_tarot_data_major_arcana",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L316",
+      "weight": 1.0,
+      "source": "frontend_data_tarot_data_js",
+      "target": "data_tarot_data_wands",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L334",
+      "weight": 1.0,
+      "source": "frontend_data_tarot_data_js",
+      "target": "data_tarot_data_cups",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L352",
+      "weight": 1.0,
+      "source": "frontend_data_tarot_data_js",
+      "target": "data_tarot_data_swords",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L370",
+      "weight": 1.0,
+      "source": "frontend_data_tarot_data_js",
+      "target": "data_tarot_data_pentacles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L388",
+      "weight": 1.0,
+      "source": "frontend_data_tarot_data_js",
+      "target": "data_tarot_data_tarot_deck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L397",
+      "weight": 1.0,
+      "source": "frontend_data_tarot_data_js",
+      "target": "data_tarot_data_spreads",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L480",
+      "weight": 1.0,
+      "source": "frontend_data_tarot_data_js",
+      "target": "data_tarot_data_drawcards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/data/tarot-data.js",
+      "source_location": "L499",
+      "weight": 1.0,
+      "source": "frontend_data_tarot_data_js",
+      "target": "data_tarot_data_simulateshuffle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_utils_daily_js",
+      "target": "frontend_data_tarot_data_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "frontend_data_tarot_data_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_utils_daily_js",
+      "target": "data_tarot_data_tarot_deck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "data_tarot_data_tarot_deck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "data_tarot_data_spreads",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "frontend_utils_daily_js",
+      "target": "utils_daily_hasdrawntoday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "frontend_utils_daily_js",
+      "target": "utils_daily_gettodaystring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "frontend_utils_daily_js",
+      "target": "utils_daily_drawdailycard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "frontend_utils_daily_js",
+      "target": "utils_daily_gettodaycard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "frontend_utils_daily_js",
+      "target": "utils_daily_getdailyhistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "frontend_utils_daily_js",
+      "target": "utils_daily_savetohistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "frontend_utils_daily_js",
+      "target": "utils_daily_hashstring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L131",
+      "weight": 1.0,
+      "source": "frontend_utils_daily_js",
+      "target": "utils_daily_getuseridentifier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "frontend_utils_daily_js",
+      "target": "utils_daily_generatedailyguidance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "utils_daily_drawdailycard",
+      "target": "utils_daily_hasdrawntoday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "utils_daily_drawdailycard",
+      "target": "utils_daily_gettodaystring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "utils_daily_gettodaycard",
+      "target": "utils_daily_gettodaystring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L98",
+      "weight": 1.0,
+      "source": "utils_daily_savetohistory",
+      "target": "utils_daily_gettodaystring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "utils_daily_gettodaycard",
+      "target": "utils_daily_drawdailycard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "utils_daily_drawdailycard",
+      "target": "utils_daily_hashstring",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "utils_daily_drawdailycard",
+      "target": "utils_daily_getuseridentifier",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/daily.js",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "utils_daily_drawdailycard",
+      "target": "utils_daily_savetohistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_shuffledeck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_drawcards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_drawspread",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_getcardmeaning",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_getcardkeywords",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_savereading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_getreadings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_formatdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L130",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_getcardimage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_getcardbackimage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L147",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_generatereadingtext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L167",
+      "weight": 1.0,
+      "source": "frontend_utils_tarot_js",
+      "target": "utils_tarot_simulateshufflinganimation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "utils_tarot_drawcards",
+      "target": "utils_tarot_shuffledeck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/tarot.js",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "utils_tarot_drawspread",
+      "target": "utils_tarot_drawcards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "frontend_utils_ai_js",
+      "target": "utils_ai_getbaseurl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "frontend_utils_ai_js",
+      "target": "utils_ai_getauthtoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "frontend_utils_ai_js",
+      "target": "utils_ai_buildheaders",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "frontend_utils_ai_js",
+      "target": "utils_ai_getaiinterpretation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "frontend_utils_ai_js",
+      "target": "utils_ai_saveapiconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "frontend_utils_ai_js",
+      "target": "utils_ai_getapiconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "frontend_utils_ai_js",
+      "target": "utils_ai_getquickinterpretation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "utils_ai_getbaseurl",
+      "target": "utils_ai_getapiconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "utils_ai_getaiinterpretation",
+      "target": "utils_ai_getbaseurl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "utils_ai_buildheaders",
+      "target": "utils_ai_getauthtoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/utils/ai.js",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "utils_ai_getaiinterpretation",
+      "target": "utils_ai_buildheaders",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_express",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_cors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_bcrypt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_jwt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_sqlite3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_axios",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_ratelimit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_joi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_allowed_origins",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_corsoptions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_apilimiter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_ailimiter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_schemas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_validate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L129",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L154",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_authmiddleware",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L171",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_optionalauthmiddleware",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L245",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L299",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_limit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L313",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_readings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L367",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_prompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L377",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_sanitizeuserinput",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L389",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_buildaiprompt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L428",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_callaiwithfallback",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L457",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_callopenai",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L481",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_callkimi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L505",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_callaliyun",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L530",
+      "weight": 1.0,
+      "source": "backend_server_js",
+      "target": "backend_server_callpollinations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/server.js",
+      "source_location": "L390",
+      "weight": 1.0,
+      "source": "backend_server_buildaiprompt",
+      "target": "backend_server_sanitizeuserinput",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "tarot_app_readme_tarot_dream",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "tarot_app_readme_tarot_dream",
+      "target": "tarot_app_readme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "tarot_app_readme_tarot_dream",
+      "target": "tarot_app_readme_20",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "tarot_app_readme_tarot_dream",
+      "target": "tarot_app_readme_27",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "tarot_app_readme_tarot_dream",
+      "target": "tarot_app_readme_48",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "tarot_app_readme_tarot_dream",
+      "target": "tarot_app_readme_59",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "tarot_app_readme",
+      "target": "tarot_app_readme_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "tarot_app_readme_27",
+      "target": "tarot_app_readme_29",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "tarot_app_readme_27",
+      "target": "tarot_app_readme_39",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "tarot_app_readme_29",
+      "target": "tarot_app_readme_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "tarot_app_readme_39",
+      "target": "tarot_app_readme_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "frontend_readme_md",
+      "target": "frontend_readme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "frontend_readme",
+      "target": "frontend_readme_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "frontend_readme",
+      "target": "frontend_readme_48",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "frontend_readme",
+      "target": "frontend_readme_57",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "frontend_readme",
+      "target": "frontend_readme_79",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "frontend_readme",
+      "target": "frontend_readme_95",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "frontend_readme",
+      "target": "frontend_readme_116",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L136",
+      "weight": 1.0,
+      "source": "frontend_readme",
+      "target": "frontend_readme_136",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L147",
+      "weight": 1.0,
+      "source": "frontend_readme",
+      "target": "frontend_readme_147",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L160",
+      "weight": 1.0,
+      "source": "frontend_readme",
+      "target": "frontend_readme_160",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_readme_5",
+      "target": "frontend_readme_7",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "frontend_readme_5",
+      "target": "frontend_readme_ai",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "frontend_readme_5",
+      "target": "frontend_readme_23",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "frontend_readme_5",
+      "target": "frontend_readme_29",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "frontend_readme_5",
+      "target": "frontend_readme_35",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "frontend_readme_5",
+      "target": "frontend_readme_42",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "frontend_readme_57",
+      "target": "frontend_readme_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "frontend_readme_79",
+      "target": "frontend_readme_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "frontend_readme_95",
+      "target": "frontend_readme_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "frontend_readme_95",
+      "target": "frontend_readme_2_ai",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "frontend_readme_95",
+      "target": "frontend_readme_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/README.md",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "frontend_readme_116",
+      "target": "frontend_readme_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "frontend_test_cases_md",
+      "target": "frontend_test_cases_h5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_test_cases_h5",
+      "target": "frontend_test_cases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "frontend_test_cases_h5",
+      "target": "frontend_test_cases_9",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "frontend_test_cases_h5",
+      "target": "frontend_test_cases_24",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "frontend_test_cases_h5",
+      "target": "frontend_test_cases_33",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "frontend_test_cases_h5",
+      "target": "frontend_test_cases_44",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_CASES.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "frontend_test_cases_h5",
+      "target": "frontend_test_cases_50",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "frontend_test_results_md",
+      "target": "frontend_test_results_h5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_test_results_h5",
+      "target": "frontend_test_results",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "frontend_test_results_h5",
+      "target": "frontend_test_results_8",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "frontend_test_results_h5",
+      "target": "frontend_test_results_52",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "frontend_test_results_8",
+      "target": "frontend_test_results_10",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "frontend_test_results_8",
+      "target": "frontend_test_results_17",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "frontend_test_results_8",
+      "target": "frontend_test_results_28",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "frontend_test_results_8",
+      "target": "frontend_test_results_35",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/TEST_RESULTS.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "frontend_test_results_8",
+      "target": "frontend_test_results_45",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "70917f17da93540b22f114486d892f0415675049"
+}
