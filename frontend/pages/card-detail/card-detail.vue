@@ -4,7 +4,7 @@
     
     <!-- 牌面展示 -->
     <div class="card-display" :class="{ reversed: isReversed }">
-      <img :src="getCardImage(card)" class="card-image" mode="aspectFit" />
+      <img :src="getCardImage(card)" class="card-image" mode="aspectFit" @error="setFallbackImage($event, card)" />
       <div class="orientation-toggle" @click="toggleOrientation">
         <span class="toggle-text">{{ isReversed ? '切换正位' : '切换逆位' }}</span>
       </div>
@@ -77,10 +77,14 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { TAROT_DECK } from '@/data/tarot-data.js';
-import { getCardImage } from '@/utils/tarot.js';
+import { getCardImage, getFallbackCardImage } from '@/utils/tarot.js';
 
 const card = ref(null);
 const isReversed = ref(false);
+
+const setFallbackImage = (event, cardData) => {
+  event.target.src = getFallbackCardImage(cardData);
+};
 
 const getHashPathAndQuery = () => {
   let path = '';
@@ -107,10 +111,8 @@ onMounted(() => {
   
   if (typeof window !== 'undefined' && window.location) {
     const { path, query } = getHashPathAndQuery();
-    const match = path.match(/\/card\/([^\/]+)/);
-    if (match) {
-      id = match[1];
-    }
+    const pathMatch = path.match(/\/card\/([^/?#]+)/);
+    id = query.id || pathMatch?.[1] || null;
     reversed = query.reversed === 'true';
   } else {
     try {
@@ -186,8 +188,11 @@ const drawAgain = () => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(224, 170, 255, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(8, 8, 24, 0.84) 0%, rgba(12, 18, 39, 0.95) 100%);
   padding: 30rpx;
+  overflow: hidden auto;
 }
 
 .stars {
@@ -199,6 +204,7 @@ const drawAgain = () => {
   background-image: radial-gradient(2px 2px at 20px 30px, #fff, transparent);
   opacity: 0.3;
   pointer-events: none;
+  animation: floatStars 10s ease-in-out infinite alternate;
 }
 
 .card-display {
@@ -223,14 +229,14 @@ const drawAgain = () => {
 
 .orientation-toggle {
   padding: 16rpx 40rpx;
-  background: rgba(157, 78, 221, 0.2);
+  background: rgba(157, 78, 221, 0.22);
   border-radius: 30rpx;
-  border: 1rpx solid rgba(157, 78, 221, 0.3);
+  border: 1rpx solid rgba(224, 170, 255, 0.24);
 }
 
 .toggle-text {
   font-size: 26rpx;
-  color: #9d4edd;
+  color: #f0d7ff;
 }
 
 .info-section {
@@ -249,7 +255,7 @@ const drawAgain = () => {
 .card-en {
   display: block;
   font-size: 26rpx;
-  color: #9d4edd;
+  color: #bdefff;
   margin-bottom: 16rpx;
   font-style: italic;
 }
@@ -264,7 +270,8 @@ const drawAgain = () => {
 .meta-item {
   font-size: 24rpx;
   color: rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1rpx solid rgba(224, 170, 255, 0.12);
   padding: 10rpx 20rpx;
   border-radius: 20rpx;
 }
@@ -272,7 +279,7 @@ const drawAgain = () => {
 .section-title {
   display: block;
   font-size: 32rpx;
-  color: #e0aaff;
+  color: #fff;
   font-weight: 600;
   margin-bottom: 20rpx;
 }
@@ -303,11 +310,13 @@ const drawAgain = () => {
 }
 
 .meaning-section {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1rpx solid rgba(157, 78, 221, 0.2);
+  background: rgba(255, 255, 255, 0.065);
+  border: 1rpx solid rgba(224, 170, 255, 0.2);
   border-radius: 20rpx;
   padding: 30rpx;
   margin-bottom: 40rpx;
+  box-shadow: 0 18rpx 48rpx rgba(0,0,0,.22), inset 0 1rpx 0 rgba(255,255,255,.08);
+  backdrop-filter: blur(18rpx);
 }
 
 .meaning-text {
@@ -337,15 +346,16 @@ const drawAgain = () => {
 }
 
 .advice-item {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.065);
   border-radius: 16rpx;
   padding: 24rpx;
+  border: 1rpx solid rgba(224, 170, 255, 0.16);
 }
 
 .advice-label {
   display: block;
   font-size: 28rpx;
-  color: #9d4edd;
+  color: #e0aaff;
   margin-bottom: 8rpx;
 }
 
@@ -361,7 +371,7 @@ const drawAgain = () => {
 
 .action-btn {
   width: 100%;
-  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%);
+  background: linear-gradient(135deg, #9d4edd 0%, #5a6cff 52%, #48cae4 100%);
   border: none;
   border-radius: 50rpx;
   padding: 30rpx;
@@ -371,5 +381,10 @@ const drawAgain = () => {
   color: #fff;
   font-size: 32rpx;
   font-weight: 600;
+}
+
+@keyframes floatStars {
+  from { opacity: .22; transform: translateY(0); }
+  to { opacity: .42; transform: translateY(16rpx); }
 }
 </style>

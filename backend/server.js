@@ -350,7 +350,13 @@ app.delete('/api/readings/:id', authMiddleware, (req, res) => {
     'DELETE FROM readings WHERE id = ? AND user_id = ?',
     [req.params.id, req.userId],
     function(err) {
-      if (err || this.changes === 0) {
+      // Bug #11 Fix: 之前把 DB 错误和"记录不存在"合并为 404，不利于调试
+      // 分开处理：DB 错误返回 500，记录不存在才返回 404
+      if (err) {
+        console.error('删除记录错误:', err);
+        return res.status(500).json({ error: '删除失败' });
+      }
+      if (this.changes === 0) {
         return res.status(404).json({ error: '记录不存在' });
       }
       res.json({ message: '删除成功' });

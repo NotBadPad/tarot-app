@@ -12,7 +12,12 @@ export function hasDrawnToday() {
   const lastDrawn = uni.getStorageSync(DAILY_DRAWN_KEY);
   if (!lastDrawn) return false;
   
-  const lastDate = new Date(parseInt(lastDrawn));
+  // Bug #8 Fix: 若存储值被污染导致 parseInt 返回 NaN，new Date(NaN) 比较会失效
+  // 加 NaN 校验，避免允许重复抽牌
+  const ts = parseInt(lastDrawn);
+  if (isNaN(ts)) return false;
+  
+  const lastDate = new Date(ts);
   const today = new Date();
   
   return lastDate.getFullYear() === today.getFullYear() &&

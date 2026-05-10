@@ -476,30 +476,8 @@ export const SPREADS = {
   }
 };
 
-// 获取随机牌的函数
-export function drawCards(count = 1, allowReversed = true) {
-  const deck = [...TAROT_DECK];
-  const drawn = [];
-  
-  for (let i = 0; i < count; i++) {
-    const randomIndex = Math.floor(Math.random() * deck.length);
-    const card = deck.splice(randomIndex, 1)[0];
-    
-    drawn.push({
-      ...card,
-      isReversed: allowReversed ? Math.random() > 0.5 : false,
-      timestamp: Date.now()
-    });
-  }
-  
-  return drawn;
-}
 
-// 洗牌动画模拟
-export function simulateShuffle() {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 1500); // 1.5秒洗牌动画
-  });
-}
+// 注意: drawCards 和 shuffleDeck 等工具函数统一由 utils/tarot.js 提供
+// Bug #12 Fix: 已移除此文件中重复定义的 drawCards / simulateShuffle，避免双重实现不一致
 
 export default TAROT_DECK;

@@ -116,10 +116,12 @@ const startReading = () => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(224, 170, 255, 0.18), transparent 34%),
+    linear-gradient(180deg, rgba(8, 8, 24, 0.78) 0%, rgba(13, 17, 40, 0.92) 100%);
   padding: 30rpx;
   position: relative;
-  overflow: hidden;
+  overflow: hidden auto;
 }
 
 .stars {
@@ -137,11 +139,12 @@ const startReading = () => {
     radial-gradient(2px 2px at 160px 120px, #fff, transparent);
   opacity: 0.3;
   pointer-events: none;
+  animation: twinkle 9s ease-in-out infinite alternate;
 }
 
 .header {
   text-align: center;
-  padding: 60rpx 0 40rpx;
+  padding: 72rpx 0 48rpx;
   position: relative;
 }
 
@@ -153,13 +156,18 @@ const startReading = () => {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  padding: 8rpx 10rpx;
+  border-radius: 28rpx;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14rpx);
 }
 
 .user-avatar {
   width: 60rpx;
   height: 60rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%);
+  background: linear-gradient(135deg, #9d4edd 0%, #48cae4 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,18 +186,18 @@ const startReading = () => {
 
 .title {
   display: block;
-  font-size: 56rpx;
-  font-weight: bold;
-  color: #e0aaff;
-  text-shadow: 0 0 20rpx rgba(224, 170, 255, 0.5);
+  font-size: 58rpx;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 30rpx rgba(224, 170, 255, 0.62), 0 0 70rpx rgba(72, 202, 228, 0.28);
   margin-bottom: 16rpx;
 }
 
 .subtitle {
   display: block;
   font-size: 28rpx;
-  color: #9d4edd;
-  letter-spacing: 4rpx;
+  color: rgba(232, 222, 255, 0.78);
+  letter-spacing: 2rpx;
 }
 
 .quick-actions {
@@ -200,12 +208,14 @@ const startReading = () => {
 
 .action-card {
   flex: 1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2rpx solid rgba(157, 78, 221, 0.3);
-  border-radius: 16rpx;
+  background: rgba(255, 255, 255, 0.075);
+  border: 1rpx solid rgba(224, 170, 255, 0.22);
+  border-radius: 18rpx;
   padding: 30rpx;
   text-align: center;
   transition: all 0.3s;
+  box-shadow: 0 18rpx 44rpx rgba(0, 0, 0, 0.2), inset 0 1rpx 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18rpx);
 }
 
 .action-card:active {
@@ -213,11 +223,11 @@ const startReading = () => {
 }
 
 .action-card.daily {
-  background: linear-gradient(135deg, rgba(123, 44, 191, 0.15), rgba(157, 78, 221, 0.1));
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.24), rgba(72, 202, 228, 0.12));
 }
 
 .action-card.cards {
-  background: linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(123, 44, 191, 0.15));
+  background: linear-gradient(135deg, rgba(255, 211, 105, 0.12), rgba(157, 78, 221, 0.2));
 }
 
 .action-icon {
@@ -242,7 +252,7 @@ const startReading = () => {
 .section-title {
   display: block;
   font-size: 32rpx;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.92);
   margin-bottom: 20rpx;
   font-weight: 500;
 }
@@ -258,18 +268,20 @@ const startReading = () => {
 }
 
 .spread-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2rpx solid rgba(157, 78, 221, 0.3);
-  border-radius: 16rpx;
-  padding: 30rpx;
+  background: rgba(255, 255, 255, 0.065);
+  border: 1rpx solid rgba(224, 170, 255, 0.18);
+  border-radius: 18rpx;
+  padding: 30rpx 120rpx 30rpx 30rpx;
   position: relative;
   transition: all 0.3s;
+  box-shadow: inset 0 1rpx 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16rpx);
 }
 
 .spread-card.active {
-  background: rgba(157, 78, 221, 0.15);
-  border-color: #9d4edd;
-  box-shadow: 0 0 20rpx rgba(157, 78, 221, 0.3);
+  background: linear-gradient(135deg, rgba(157, 78, 221, 0.24), rgba(72, 202, 228, 0.1));
+  border-color: rgba(224, 170, 255, 0.82);
+  box-shadow: 0 0 34rpx rgba(157, 78, 221, 0.28), inset 0 1rpx 0 rgba(255, 255, 255, 0.14);
 }
 
 .spread-name {
@@ -293,8 +305,8 @@ const startReading = () => {
   top: 50%;
   transform: translateY(-50%);
   font-size: 24rpx;
-  color: #9d4edd;
-  background: rgba(157, 78, 221, 0.2);
+  color: #f5ddff;
+  background: rgba(157, 78, 221, 0.24);
   padding: 8rpx 16rpx;
   border-radius: 20rpx;
 }
@@ -307,13 +319,15 @@ const startReading = () => {
 .question-input {
   width: 100%;
   height: 160rpx;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2rpx solid rgba(157, 78, 221, 0.3);
-  border-radius: 16rpx;
-  padding: 20rpx;
+  background: rgba(255, 255, 255, 0.075);
+  border: 1rpx solid rgba(224, 170, 255, 0.24);
+  border-radius: 18rpx;
+  padding: 24rpx;
   color: #fff;
   font-size: 28rpx;
   box-sizing: border-box;
+  box-shadow: inset 0 1rpx 0 rgba(255,255,255,.08);
+  backdrop-filter: blur(16rpx);
 }
 
 .question-input::placeholder {
@@ -329,7 +343,7 @@ const startReading = () => {
 }
 
 .start-btn {
-  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%);
+  background: linear-gradient(135deg, #9d4edd 0%, #5a6cff 48%, #48cae4 100%);
   border: none;
   border-radius: 50rpx;
   padding: 30rpx 80rpx;
@@ -337,7 +351,7 @@ const startReading = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10rpx 40rpx rgba(157, 78, 221, 0.4);
+  box-shadow: 0 18rpx 52rpx rgba(72, 202, 228, 0.22), 0 10rpx 38rpx rgba(157, 78, 221, 0.38);
   transition: transform 0.2s;
 }
 
@@ -358,6 +372,11 @@ const startReading = () => {
 
 .intro-text {
   font-size: 24rpx;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes twinkle {
+  from { opacity: .22; transform: translateY(0); }
+  to { opacity: .42; transform: translateY(12rpx); }
 }
 </style>

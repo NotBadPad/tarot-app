@@ -9,8 +9,16 @@
       <span class="time">{{ formatTime(reading?.timestamp) }}</span>
     </div>
     
+    <div v-if="!reading" class="empty-result">
+      <span class="empty-title">没有找到这次占卜</span>
+      <span class="empty-hint">可能是记录已被清除，重新抽一次会更准。</span>
+      <button class="ai-btn" @click="drawAgain">
+        <span class="btn-text">重新开始</span>
+      </button>
+    </div>
+
     <!-- 牌面展示 -->
-    <div class="cards-section">
+    <div v-else class="cards-section">
       <div 
         v-for="(card, index) in reading?.cards" 
         :key="index"
@@ -18,7 +26,7 @@
         :class="{ reversed: card.isReversed }"
       >
         <div class="position-badge">{{ card.position?.name }}</div>
-        <img :src="getCardImage(card)" class="card-image" mode="aspectFit" />
+        <img :src="getCardImage(card)" class="card-image" mode="aspectFit" @error="setFallbackImage($event, card)" />
         <div class="card-info">
           <span class="card-name">{{ card.name }}</span>
           <span class="orientation">{{ card.isReversed ? '逆位' : '正位' }}</span>
@@ -51,10 +59,9 @@
       
       <!-- 解读内容 -->
       <div v-else-if="interpretation" class="interpretation-content">
-      <!-- 解读内容 -->
-      <div v-if="isH5" v-html="formatInterpretation(interpretation)"></div>
-      <rich-text v-else :nodes="formatInterpretation(interpretation)"></rich-text>
-    </div>
+        <div v-if="isH5" v-html="formatInterpretation(interpretation)"></div>
+        <rich-text v-else :nodes="formatInterpretation(interpretation)"></rich-text>
+      </div>
       
       <!-- 获取按钮 -->
       <button 
@@ -83,14 +90,18 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { getCardMeaning, getCardImage, getCardKeywords } from '@/utils/tarot.js';
+import { getCardMeaning, getCardImage, getCardKeywords, getFallbackCardImage } from '@/utils/tarot.js';
 import { getAIInterpretation, getQuickInterpretation } from '@/utils/ai.js';
 
 const reading = ref(null);
 const interpretation = ref('');
 const loading = ref(false);
 const hasAIConfig = ref(false);
-const isH5 = typeof window !== 'undefined' && !!window.location;
+const isH5 = typeof window !== 'undefined' && typeof document !== 'undefined';
+
+const setFallbackImage = (event, card) => {
+  event.target.src = getFallbackCardImage(card);
+};
 
 const getQueryParam = (key) => {
   let queryStr = '';
@@ -138,6 +149,11 @@ const getKeywords = (card) => {
 };
 
 const getInterpretation = async () => {
+  if (!reading.value) {
+    uni.showToast({ title: '没有可解读的占卜记录', icon: 'none' });
+    return;
+  }
+
   loading.value = true;
   
   try {
@@ -150,6 +166,11 @@ const getInterpretation = async () => {
     
     if (result.success) {
       interpretation.value = result.interpretation;
+    } else if (result.status === 401 || result.error?.includes('401') || result.error?.includes('token')) {
+      // Bug #6 Fix: 游客模式无 token 会收到 401，应给出明确提示而非悄悄降级
+      uni.showToast({ title: '请先登录后再获取 AI 解读', icon: 'none', duration: 2500 });
+      const quick = getQuickInterpretation(reading.value.cards);
+      interpretation.value = quick.interpretation + '\n\n---\n\n*登录后可获取更深度的 AI 智能解读*';
     } else {
       // AI 失败时使用快速解读
       const quick = getQuickInterpretation(reading.value.cards);
@@ -174,14 +195,17 @@ const formatInterpretation = (text) => {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 
-  const escaped = escapeHtml(text);
+  const escaped = escapeHtml(text)
+    .replace(/\n{2,}---\n{2,}/g, '\n---\n')
+    .replace(/\n{3,}/g, '\n\n');
 
   // 简单的 Markdown 转换（在转换过程中保持转义，避免重新引入 HTML 标签）
   return escaped
     .replace(/\*\*(.+?)\*\*/g, '<strong style="color: #e0aaff;">$1</strong>')
-    .replace(/###\s+(.+)/g, '<div style="color: #9d4edd; font-size: 16px; margin: 16px 0 8px;">$1</div>')
-    .replace(/##\s+(.+)/g, '<div style="color: #e0aaff; font-size: 18px; margin: 20px 0 12px; font-weight: bold;">$1</div>')
-    .replace(/---/g, '<hr style="border: none; border-top: 1px solid rgba(157, 78, 221, 0.3); margin: 16px 0;">')
+    .replace(/###\s+(.+)/g, '<div style="color: #9d4edd; font-size: 16px; margin: 10px 0 4px;">$1</div>')
+    .replace(/##\s+(.+)/g, '<div style="color: #e0aaff; font-size: 18px; margin: 12px 0 6px; font-weight: bold;">$1</div>')
+    .replace(/---/g, '<hr style="border: none; border-top: 1px solid rgba(157, 78, 221, 0.3); margin: 10px 0;">')
+    .replace(/\n{2,}/g, '\n')
     .replace(/\n/g, '<br>');
 };
 
@@ -206,8 +230,11 @@ const drawAgain = () => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(224, 170, 255, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(8, 8, 24, 0.84) 0%, rgba(12, 18, 39, 0.95) 100%);
   padding: 30rpx;
+  overflow: hidden auto;
 }
 
 .stars {
@@ -221,19 +248,21 @@ const drawAgain = () => {
     radial-gradient(2px 2px at 40px 70px, #fff, transparent);
   opacity: 0.3;
   pointer-events: none;
+  animation: floatStars 10s ease-in-out infinite alternate;
 }
 
 .header {
   text-align: center;
-  padding: 30rpx 0;
+  padding: 18rpx 0 22rpx;
 }
 
 .spread-name {
   display: block;
   font-size: 40rpx;
-  color: #e0aaff;
+  color: #fff;
   font-weight: 600;
-  margin-bottom: 16rpx;
+  margin-bottom: 10rpx;
+  text-shadow: 0 0 28rpx rgba(224, 170, 255, 0.58);
 }
 
 .question {
@@ -250,23 +279,25 @@ const drawAgain = () => {
 }
 
 .cards-section {
-  margin-bottom: 40rpx;
+  margin-bottom: 24rpx;
 }
 
 .card-item {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1rpx solid rgba(157, 78, 221, 0.2);
+  background: rgba(255, 255, 255, 0.065);
+  border: 1rpx solid rgba(224, 170, 255, 0.2);
   border-radius: 20rpx;
-  padding: 30rpx;
-  margin-bottom: 30rpx;
+  padding: 24rpx;
+  margin-bottom: 22rpx;
   position: relative;
+  box-shadow: 0 20rpx 54rpx rgba(0, 0, 0, 0.24), inset 0 1rpx 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18rpx);
 }
 
 .position-badge {
   position: absolute;
   top: -16rpx;
   left: 30rpx;
-  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+  background: linear-gradient(135deg, #9d4edd, #48cae4);
   color: #fff;
   font-size: 22rpx;
   padding: 8rpx 20rpx;
@@ -274,13 +305,14 @@ const drawAgain = () => {
 }
 
 .card-image {
-  width: 200rpx;
-  height: 300rpx;
+  width: 300rpx;
+  height: 450rpx;
   border-radius: 16rpx;
   background: linear-gradient(135deg, #2d2d4a 0%, #1a1a2e 100%);
   display: block;
-  margin: 20rpx auto;
+  margin: 14rpx auto 16rpx;
   transition: transform 0.3s;
+  box-shadow: 0 18rpx 44rpx rgba(0, 0, 0, 0.32);
 }
 
 .card-item.reversed .card-image {
@@ -289,7 +321,7 @@ const drawAgain = () => {
 
 .card-info {
   text-align: center;
-  margin-bottom: 20rpx;
+  margin-bottom: 16rpx;
 }
 
 .card-name {
@@ -297,14 +329,14 @@ const drawAgain = () => {
   font-size: 32rpx;
   color: #fff;
   font-weight: 600;
-  margin-bottom: 8rpx;
+  margin-bottom: 4rpx;
 }
 
 .orientation {
   font-size: 24rpx;
-  color: #9d4edd;
+  color: #e0aaff;
   display: block;
-  margin-bottom: 12rpx;
+  margin-bottom: 10rpx;
 }
 
 .keywords {
@@ -317,22 +349,24 @@ const drawAgain = () => {
 .keyword-tag {
   font-size: 22rpx;
   color: rgba(255, 255, 255, 0.7);
-  background: rgba(157, 78, 221, 0.15);
+  background: rgba(157, 78, 221, 0.18);
+  border: 1rpx solid rgba(224, 170, 255, 0.12);
   padding: 6rpx 16rpx;
   border-radius: 16rpx;
 }
 
 .meaning-box {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.22);
   border-radius: 12rpx;
-  padding: 20rpx;
+  padding: 16rpx 18rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.06);
 }
 
 .meaning-title {
   display: block;
   font-size: 24rpx;
-  color: #9d4edd;
-  margin-bottom: 8rpx;
+  color: #e0aaff;
+  margin-bottom: 4rpx;
 }
 
 .meaning-text {
@@ -342,18 +376,20 @@ const drawAgain = () => {
 }
 
 .interpretation-section {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1rpx solid rgba(157, 78, 221, 0.2);
+  background: rgba(255, 255, 255, 0.065);
+  border: 1rpx solid rgba(224, 170, 255, 0.2);
   border-radius: 20rpx;
-  padding: 30rpx;
-  margin-bottom: 40rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 20rpx 54rpx rgba(0, 0, 0, 0.24), inset 0 1rpx 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18rpx);
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20rpx;
+  margin-bottom: 14rpx;
 }
 
 .section-title {
@@ -384,7 +420,7 @@ const drawAgain = () => {
   width: 60rpx;
   height: 60rpx;
   border: 4rpx solid rgba(157, 78, 221, 0.2);
-  border-top-color: #9d4edd;
+  border-top-color: #48cae4;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 20rpx;
@@ -400,17 +436,19 @@ const drawAgain = () => {
 }
 
 .interpretation-content {
-  font-size: 28rpx;
+  font-size: 27rpx;
   color: rgba(255, 255, 255, 0.85);
-  line-height: 1.8;
+  line-height: 1.55;
 }
 
 .ai-btn {
-  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%);
+  width: 100%;
+  background: linear-gradient(135deg, #9d4edd 0%, #5a6cff 52%, #48cae4 100%);
   border: none;
-  border-radius: 16rpx;
+  border-radius: 22rpx;
   padding: 30rpx;
   margin: 20rpx 0;
+  box-shadow: 0 16rpx 42rpx rgba(72, 202, 228, 0.2), 0 10rpx 34rpx rgba(157, 78, 221, 0.3);
 }
 
 .ai-btn .btn-text {
@@ -422,7 +460,7 @@ const drawAgain = () => {
 .actions {
   display: flex;
   gap: 20rpx;
-  margin-bottom: 40rpx;
+  margin-bottom: 24rpx;
 }
 
 .action-btn {
@@ -433,16 +471,16 @@ const drawAgain = () => {
   gap: 12rpx;
   padding: 26rpx;
   border: none;
-  border-radius: 16rpx;
+  border-radius: 18rpx;
 }
 
 .action-btn.primary {
-  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%);
+  background: linear-gradient(135deg, #9d4edd 0%, #5a6cff 52%, #48cae4 100%);
 }
 
 .action-btn.secondary {
   background: rgba(255, 255, 255, 0.08);
-  border: 1rpx solid rgba(157, 78, 221, 0.3);
+  border: 1rpx solid rgba(224, 170, 255, 0.24);
 }
 
 .action-btn .btn-icon {
@@ -547,5 +585,37 @@ const drawAgain = () => {
   color: rgba(255, 255, 255, 0.4);
   text-align: center;
   margin-top: 20rpx;
+}
+
+.empty-result {
+  margin: 80rpx 0 40rpx;
+  padding: 42rpx 30rpx;
+  text-align: center;
+  border-radius: 22rpx;
+  background: rgba(255,255,255,.065);
+  border: 1rpx solid rgba(224, 170, 255, 0.2);
+  backdrop-filter: blur(18rpx);
+}
+
+.empty-title,
+.empty-hint {
+  display: block;
+}
+
+.empty-title {
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}
+
+.empty-hint {
+  color: rgba(255,255,255,.58);
+  font-size: 26rpx;
+}
+
+@keyframes floatStars {
+  from { opacity: .22; transform: translateY(0); }
+  to { opacity: .42; transform: translateY(16rpx); }
 }
 </style>

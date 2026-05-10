@@ -54,7 +54,7 @@
             class="drawn-card"
             :class="{ reversed: card.isReversed }"
           >
-            <img :src="getCardImage(card)" class="card-image" mode="aspectFit" />
+            <img :src="getCardImage(card)" class="card-image" mode="aspectFit" @error="setFallbackImage($event, card)" />
             <span class="position-label">{{ card.position?.name || `第${index + 1}张` }}</span>
           </div>
         </div>
@@ -72,7 +72,7 @@
           :class="{ reversed: card.isReversed }"
           :style="{ animationDelay: `${index * 0.1}s` }"
         >
-          <img :src="getCardImage(card)" class="card-image" mode="aspectFit" />
+          <img :src="getCardImage(card)" class="card-image" mode="aspectFit" @error="setFallbackImage($event, card)" />
           <span class="card-name">{{ card.name }}</span>
           <span class="orientation">{{ card.isReversed ? '逆位' : '正位' }}</span>
         </div>
@@ -87,7 +87,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { SPREADS } from '@/data/tarot-data.js';
-import { shuffleDeck, getCardImage } from '@/utils/tarot.js';
+import { shuffleDeck, getCardImage, getFallbackCardImage } from '@/utils/tarot.js';
 
 const cardBackImage = '/static/images/card-back.svg';
 
@@ -105,6 +105,10 @@ const drawnCards = ref([]);
 const totalCards = computed(() => spread.value?.positions.length || 1);
 const remainingCards = computed(() => totalCards.value - currentIndex.value);
 
+const setFallbackImage = (event, card) => {
+  event.target.src = getFallbackCardImage(card);
+};
+
 const getQueryParams = () => {
   let queryStr = '';
   if (window.location.hash) {
@@ -120,7 +124,8 @@ onMounted(() => {
   const query = getQueryParams();
   spreadId.value = query.spreadId || 'single';
   question.value = decodeURIComponent(query.question || '');
-  spread.value = SPREADS[spreadId.value];
+  spread.value = SPREADS[spreadId.value] || SPREADS.single;
+  spreadId.value = spread.value.id;
   startShuffle();
 });
 
@@ -137,21 +142,27 @@ const startShuffle = async () => {
 const drawCard = () => {
   if (currentIndex.value >= totalCards.value) return;
   
-  const card = deck.value[currentIndex.value];
+  // Bug #5 Fix: 浅拷贝避免直接修改 deck 内的响应式对象引用
+  const card = { ...deck.value[currentIndex.value] };
   card.isReversed = Math.random() > 0.5;
   card.position = spread.value.positions[currentIndex.value];
   
   drawnCards.value.push(card);
   currentIndex.value++;
   
-  // 需要震动反馈
+  // Bug #1 Fix: H5 不支持 vibrateShort，使用条件编译避免报错
+  // #ifndef H5
   uni.vibrateShort({
     type: 'light'
   });
+  // #endif
   
   if (currentIndex.value >= totalCards.value) {
     setTimeout(() => {
       isComplete.value = true;
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }, 500);
   }
 };
@@ -181,8 +192,11 @@ const viewResult = () => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+  background:
+    radial-gradient(circle at 50% 8%, rgba(224, 170, 255, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(8, 8, 24, 0.84) 0%, rgba(12, 18, 39, 0.95) 100%);
   position: relative;
+  overflow: hidden auto;
 }
 
 .stars {
@@ -197,6 +211,7 @@ const viewResult = () => {
     radial-gradient(2px 2px at 50px 160px, #fff, transparent);
   opacity: 0.3;
   pointer-events: none;
+  animation: floatStars 10s ease-in-out infinite alternate;
 }
 
 /* 洗牌动画 */
@@ -214,6 +229,7 @@ const viewResult = () => {
   height: 280rpx;
   position: relative;
   margin-bottom: 60rpx;
+  filter: drop-shadow(0 28rpx 60rpx rgba(157, 78, 221, 0.35));
 }
 
 .card-pile {
@@ -231,15 +247,16 @@ const viewResult = () => {
 
 @keyframes shuffle {
   0%, 100% { transform: translateX(0) rotate(0deg); }
-  25% { transform: translateX(-30rpx) rotate(-5deg); }
-  75% { transform: translateX(30rpx) rotate(5deg); }
+  25% { transform: translateX(-34rpx) translateY(6rpx) rotate(-7deg); }
+  75% { transform: translateX(34rpx) translateY(-6rpx) rotate(7deg); }
 }
 
 .shuffle-text {
   font-size: 40rpx;
-  color: #e0aaff;
+  color: #fff;
   margin-bottom: 20rpx;
   font-weight: 500;
+  text-shadow: 0 0 28rpx rgba(224, 170, 255, 0.58);
 }
 
 .shuffle-hint {
@@ -269,14 +286,15 @@ const viewResult = () => {
 
 .progress-bar {
   height: 8rpx;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 4rpx;
   overflow: hidden;
+  box-shadow: inset 0 1rpx 0 rgba(255,255,255,.08);
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #9d4edd, #e0aaff);
+  background: linear-gradient(90deg, #9d4edd, #48cae4, #ffe29a);
   border-radius: 4rpx;
   transition: width 0.3s;
 }
@@ -295,6 +313,8 @@ const viewResult = () => {
   width: 200rpx;
   height: 280rpx;
   cursor: pointer;
+  filter: drop-shadow(0 24rpx 64rpx rgba(72, 202, 228, 0.2));
+  animation: breathe 3.2s ease-in-out infinite;
 }
 
 .deck-card {
@@ -303,7 +323,7 @@ const viewResult = () => {
   height: 100%;
   border-radius: 16rpx;
   overflow: hidden;
-  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12rpx 34rpx rgba(0, 0, 0, 0.36);
   transition: transform 0.3s;
 }
 
@@ -314,9 +334,9 @@ const viewResult = () => {
 .card-back {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%);
+  background: linear-gradient(135deg, #6d3fd1 0%, #9d4edd 48%, #48cae4 100%);
   border-radius: 16rpx;
-  border: 4rpx solid rgba(255, 255, 255, 0.1);
+  border: 4rpx solid rgba(255, 255, 255, 0.14);
 }
 
 .deck-count {
@@ -328,6 +348,7 @@ const viewResult = () => {
 .drawn-cards {
   height: 320rpx;
   white-space: nowrap;
+  overflow-x: auto;
 }
 
 .cards-row {
@@ -363,6 +384,7 @@ const viewResult = () => {
   border-radius: 12rpx;
   background: linear-gradient(135deg, #2d2d4a 0%, #1a1a2e 100%);
   transition: transform 0.3s;
+  box-shadow: 0 16rpx 34rpx rgba(0, 0, 0, 0.28);
 }
 
 .position-label {
@@ -383,13 +405,15 @@ const viewResult = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .complete-text {
   font-size: 48rpx;
-  color: #e0aaff;
+  color: #fff;
   margin-bottom: 40rpx;
   font-weight: 600;
+  text-shadow: 0 0 32rpx rgba(224, 170, 255, 0.6);
 }
 
 .cards-preview {
@@ -442,16 +466,26 @@ const viewResult = () => {
 }
 
 .result-btn {
-  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%);
+  background: linear-gradient(135deg, #9d4edd 0%, #5a6cff 52%, #48cae4 100%);
   border: none;
   border-radius: 50rpx;
   padding: 30rpx 100rpx;
-  box-shadow: 0 10rpx 40rpx rgba(157, 78, 221, 0.4);
+  box-shadow: 0 18rpx 52rpx rgba(72, 202, 228, 0.22), 0 10rpx 38rpx rgba(157, 78, 221, 0.38);
 }
 
 .result-btn .btn-text {
   color: #fff;
   font-size: 32rpx;
   font-weight: 600;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8rpx) scale(1.015); }
+}
+
+@keyframes floatStars {
+  from { opacity: .22; transform: translateY(0); }
+  to { opacity: .42; transform: translateY(16rpx); }
 }
 </style>

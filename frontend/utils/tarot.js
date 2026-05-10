@@ -129,9 +129,50 @@ export function formatDate(timestamp) {
  */
 export function getCardImage(card) {
   if (!card) return '/static/images/card-back.svg';
+  if (card.image) return card.image;
+
   const suit = card.suit || 'major';
   const number = card.number !== undefined ? card.number : card.id;
   return `/static/images/cards/${suit}/${number}.svg`;
+}
+
+/**
+ * 牌面图片加载失败时的梦幻占位图
+ */
+export function getFallbackCardImage(card) {
+  const title = card?.name || '塔罗';
+  const subtitle = card?.nameEn || 'Tarot Dream';
+  const suit = card?.suit || 'major';
+  const palettes = {
+    major: ['#2b174d', '#6d3fd1', '#f2c879'],
+    cups: ['#15345d', '#42a7c6', '#e7f8ff'],
+    wands: ['#4b1b2b', '#d96b43', '#fff0a8'],
+    swords: ['#1d284f', '#7da1ff', '#eef4ff'],
+    pentacles: ['#193d35', '#6fb46e', '#f0ffd0']
+  };
+  const [deep, glow, ink] = palettes[suit] || palettes.major;
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="${deep}"/>
+          <stop offset="1" stop-color="#090817"/>
+        </linearGradient>
+        <radialGradient id="halo" cx="50%" cy="34%" r="45%">
+          <stop offset="0" stop-color="${glow}" stop-opacity=".72"/>
+          <stop offset="1" stop-color="${glow}" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect x="8" y="8" width="224" height="344" rx="18" fill="url(#bg)" stroke="${ink}" stroke-opacity=".78" stroke-width="3"/>
+      <circle cx="120" cy="122" r="86" fill="url(#halo)"/>
+      <path d="M120 54l13 43 43 13-43 13-13 43-13-43-43-13 43-13z" fill="${ink}" opacity=".88"/>
+      <circle cx="120" cy="110" r="38" fill="none" stroke="${ink}" stroke-opacity=".55" stroke-width="2"/>
+      <path d="M54 250c28-24 104-24 132 0" fill="none" stroke="${ink}" stroke-opacity=".42" stroke-width="2"/>
+      <text x="120" y="286" text-anchor="middle" font-size="25" font-weight="700" fill="${ink}" font-family="Arial, sans-serif">${title}</text>
+      <text x="120" y="314" text-anchor="middle" font-size="12" fill="${ink}" opacity=".72" font-family="Arial, sans-serif">${subtitle}</text>
+    </svg>
+  `;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
 /**
@@ -178,6 +219,7 @@ export default {
   getReadings,
   formatDate,
   getCardImage,
+  getFallbackCardImage,
   getCardBackImage,
   generateReadingText,
   simulateShufflingAnimation

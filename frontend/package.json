@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "塔罗牌占卜小程序",
   "scripts": {
-    "dev:h5": "vite --config vite.config.js",
+    "dev:h5": "vite --config vite.config.h5.js",
     "build:h5": "vite build --config vite.config.h5.js",
-    "build:mp-weixin": "uni build -p mp-weixin"
+    "build:mp-weixin": "uni build -p mp-weixin",
+    "generate:cards": "node scripts/generate-tarot-cards.mjs"
   },
   "dependencies": {
     "semver": "^7.7.4",

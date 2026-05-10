@@ -14,10 +14,10 @@
     
     <!-- 抽牌区域 -->
     <div v-if="!hasDrawn && !showCard" class="draw-area">
-      <div class="card-placeholder" @click="drawCard">
+      <div class="card-placeholder" :class="{ drawing: isDrawing }" @click="drawCard">
         <div class="card-back">
           <span class="card-pattern">✦</span>
-          <span class="card-text">点击抽取今日牌运</span>
+          <span class="card-text">{{ isDrawing ? '正在聆听星象...' : '点击抽取今日牌运' }}</span>
         </div>
       </div>
       <span class="draw-hint">每天只有一次机会，集中精神思考今天的期许</span>
@@ -31,6 +31,7 @@
           class="card-image" 
           mode="aspectFit"
           @click="viewCardDetail"
+          @error="setFallbackImage($event, dailyCard)"
         />
         <div class="card-info">
           <span class="card-name">{{ dailyCard?.name }}</span>
@@ -79,12 +80,17 @@ import {
   getTodayCard,
   generateDailyGuidance 
 } from '@/utils/daily.js';
-import { getCardImage } from '@/utils/tarot.js';
+import { getCardImage, getFallbackCardImage } from '@/utils/tarot.js';
 
 const hasDrawn = ref(false);
 const showCard = ref(false);
+const isDrawing = ref(false);
 const dailyCard = ref(null);
 const guidance = ref({ general: '', keywords: [] });
+
+const setFallbackImage = (event, card) => {
+  event.target.src = getFallbackCardImage(card);
+};
 
 const todayDate = ref('');
 const moonPhase = ref({ icon: '🌑', name: '新月' });
@@ -120,17 +126,21 @@ const initDate = () => {
 };
 
 const drawCard = () => {
+  if (isDrawing.value) return;
+
+  // Bug #2 Fix: H5 不支持 vibrateShort，使用条件编译
+  // #ifndef H5
   uni.vibrateShort({ type: 'light' });
+  // #endif
   
-  // 添加动画效果
-  uni.showLoading({ title: '洗牌中...' });
+  isDrawing.value = true;
   
   setTimeout(() => {
     dailyCard.value = drawDailyCard();
     guidance.value = generateDailyGuidance(dailyCard.value);
     hasDrawn.value = true;
     showCard.value = true;
-    uni.hideLoading();
+    isDrawing.value = false;
   }, 1000);
 };
 
@@ -160,9 +170,12 @@ const viewHistory = () => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+  background:
+    radial-gradient(circle at 50% 6%, rgba(72, 202, 228, 0.14), transparent 30%),
+    linear-gradient(180deg, rgba(8, 8, 24, 0.82) 0%, rgba(14, 20, 42, 0.96) 100%);
   padding: 30rpx;
   position: relative;
+  overflow: hidden auto;
 }
 
 .stars {
@@ -177,6 +190,7 @@ const viewHistory = () => {
     radial-gradient(2px 2px at 50px 160px, #fff, transparent);
   opacity: 0.3;
   pointer-events: none;
+  animation: floatStars 10s ease-in-out infinite alternate;
 }
 
 .header {
@@ -187,10 +201,10 @@ const viewHistory = () => {
 .title {
   display: block;
   font-size: 48rpx;
-  color: #e0aaff;
+  color: #fff;
   font-weight: 600;
   margin-bottom: 12rpx;
-  text-shadow: 0 0 20rpx rgba(224, 170, 255, 0.3);
+  text-shadow: 0 0 28rpx rgba(224, 170, 255, 0.52);
 }
 
 .subtitle {
@@ -213,7 +227,7 @@ const viewHistory = () => {
 
 .moon-name {
   font-size: 24rpx;
-  color: #9d4edd;
+  color: #bdefff;
 }
 
 /* 抽牌区域 */
@@ -230,23 +244,33 @@ const viewHistory = () => {
   margin-bottom: 40rpx;
   cursor: pointer;
   transition: transform 0.3s;
+  filter: drop-shadow(0 26rpx 70rpx rgba(72, 202, 228, 0.18));
+  animation: breathe 3.4s ease-in-out infinite;
 }
 
 .card-placeholder:active {
   transform: scale(0.95);
 }
 
+.card-placeholder.drawing {
+  pointer-events: none;
+}
+
+.card-placeholder.drawing .card-back {
+  animation: dailyShuffle 1s ease-in-out infinite;
+}
+
 .card-back {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 50%, #7b2cbf 100%);
+  background: linear-gradient(135deg, #5a2ac9 0%, #9d4edd 48%, #48cae4 100%);
   border-radius: 20rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 4rpx solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20rpx 60rpx rgba(123, 44, 191, 0.4);
+  border: 4rpx solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20rpx 60rpx rgba(123, 44, 191, 0.4), inset 0 1rpx 0 rgba(255,255,255,.16);
 }
 
 .card-pattern {
@@ -320,21 +344,23 @@ const viewHistory = () => {
 
 .orientation {
   font-size: 26rpx;
-  color: #9d4edd;
+  color: #e0aaff;
 }
 
 .guidance-box {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1rpx solid rgba(157, 78, 221, 0.2);
+  background: rgba(255, 255, 255, 0.065);
+  border: 1rpx solid rgba(224, 170, 255, 0.2);
   border-radius: 20rpx;
   padding: 40rpx;
   margin-bottom: 40rpx;
+  box-shadow: 0 20rpx 54rpx rgba(0, 0, 0, 0.24), inset 0 1rpx 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18rpx);
 }
 
 .guidance-title {
   display: block;
   font-size: 32rpx;
-  color: #e0aaff;
+  color: #fff;
   margin-bottom: 20rpx;
   font-weight: 600;
 }
@@ -355,8 +381,9 @@ const viewHistory = () => {
 
 .keyword-tag {
   font-size: 24rpx;
-  color: #9d4edd;
-  background: rgba(157, 78, 221, 0.15);
+  color: #f0d7ff;
+  background: rgba(157, 78, 221, 0.18);
+  border: 1rpx solid rgba(224, 170, 255, 0.12);
   padding: 10rpx 24rpx;
   border-radius: 24rpx;
 }
@@ -375,12 +402,14 @@ const viewHistory = () => {
   gap: 12rpx;
   padding: 26rpx;
   border: none;
-  border-radius: 16rpx;
+  border-radius: 18rpx;
   background: rgba(255, 255, 255, 0.08);
+  border: 1rpx solid rgba(224, 170, 255, 0.18);
 }
 
 .action-btn.primary {
-  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%);
+  background: linear-gradient(135deg, #9d4edd 0%, #5a6cff 52%, #48cae4 100%);
+  border: none;
 }
 
 .action-btn .btn-icon {
@@ -401,5 +430,21 @@ const viewHistory = () => {
 .history-text {
   font-size: 26rpx;
   color: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes breathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8rpx) scale(1.015); }
+}
+
+@keyframes dailyShuffle {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(-4deg) translateY(-6rpx); }
+  75% { transform: rotate(4deg) translateY(6rpx); }
+}
+
+@keyframes floatStars {
+  from { opacity: .22; transform: translateY(0); }
+  to { opacity: .42; transform: translateY(16rpx); }
 }
 </style>

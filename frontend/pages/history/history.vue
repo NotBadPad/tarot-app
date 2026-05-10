@@ -39,7 +39,7 @@
             class="mini-card"
             :class="{ reversed: card.isReversed }"
           >
-            <img :src="getCardImage(card)" class="mini-image" mode="aspectFit" />
+            <img :src="getCardImage(card)" class="mini-image" mode="aspectFit" @error="setFallbackImage($event, card)" />
             <span class="mini-name">{{ card.name }}</span>
           </div>
           <span v-if="reading.cards.length > 3" class="more-cards">
@@ -61,9 +61,13 @@
 
 <script setup>
 import { ref, onMounted  } from 'vue';
-import { getCardImage } from '@/utils/tarot.js';
+import { getCardImage, getFallbackCardImage } from '@/utils/tarot.js';
 
 const readings = ref([]);
+
+const setFallbackImage = (event, card) => {
+  event.target.src = getFallbackCardImage(card);
+};
 
 onMounted(() => {
   loadReadings();
@@ -78,8 +82,11 @@ const formatTime = (timestamp) => {
   const now = new Date();
   const diff = now - date;
   
-  if (diff < 86400000) {
-    return `${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
+  // Bug #7 Fix: 之前用 diff < 86400000 判断"今天"不准确（昨晚深夜也会被算为今天内）
+  // 改为比较日历日期字符串，确保只有真正同一天才显示纯时间
+  const isToday = date.toDateString() === now.toDateString();
+  if (isToday) {
+    return `今天 ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
   }
   if (diff < 604800000) {
     return `${Math.floor(diff / 86400000)}天前`;
@@ -120,8 +127,11 @@ const clearAll = () => {
 <style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(224, 170, 255, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(8, 8, 24, 0.84) 0%, rgba(12, 18, 39, 0.95) 100%);
   padding: 30rpx;
+  overflow: hidden auto;
 }
 
 .stars {
@@ -134,6 +144,7 @@ const clearAll = () => {
     radial-gradient(2px 2px at 20px 30px, #fff, transparent);
   opacity: 0.3;
   pointer-events: none;
+  animation: floatStars 10s ease-in-out infinite alternate;
 }
 
 .header {
@@ -144,9 +155,10 @@ const clearAll = () => {
 .title {
   display: block;
   font-size: 44rpx;
-  color: #e0aaff;
+  color: #fff;
   font-weight: 600;
   margin-bottom: 12rpx;
+  text-shadow: 0 0 28rpx rgba(224, 170, 255, 0.52);
 }
 
 .subtitle {
@@ -180,7 +192,7 @@ const clearAll = () => {
 }
 
 .start-btn {
-  background: linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%);
+  background: linear-gradient(135deg, #9d4edd 0%, #5a6cff 52%, #48cae4 100%);
   border: none;
   border-radius: 50rpx;
   padding: 24rpx 80rpx;
@@ -199,10 +211,18 @@ const clearAll = () => {
 }
 
 .reading-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1rpx solid rgba(157, 78, 221, 0.2);
+  background: rgba(255, 255, 255, 0.065);
+  border: 1rpx solid rgba(224, 170, 255, 0.2);
   border-radius: 20rpx;
   padding: 30rpx;
+  box-shadow: 0 18rpx 48rpx rgba(0, 0, 0, 0.22), inset 0 1rpx 0 rgba(255,255,255,.08);
+  backdrop-filter: blur(18rpx);
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.reading-card:active {
+  transform: scale(.99);
+  border-color: rgba(224, 170, 255, 0.46);
 }
 
 .card-header {
@@ -253,6 +273,7 @@ const clearAll = () => {
   border-radius: 8rpx;
   background: linear-gradient(135deg, #2d2d4a 0%, #1a1a2e 100%);
   margin-bottom: 8rpx;
+  box-shadow: 0 8rpx 18rpx rgba(0,0,0,.25);
 }
 
 .mini-name {
@@ -266,7 +287,7 @@ const clearAll = () => {
 
 .more-cards {
   font-size: 24rpx;
-  color: #9d4edd;
+  color: #e0aaff;
   margin-left: 12rpx;
 }
 
@@ -285,7 +306,7 @@ const clearAll = () => {
 
 .view-btn {
   font-size: 26rpx;
-  color: #9d4edd;
+  color: #bdefff;
 }
 
 .clear-section {
@@ -297,5 +318,10 @@ const clearAll = () => {
   font-size: 26rpx;
   color: rgba(255, 255, 255, 0.4);
   text-decoration: underline;
+}
+
+@keyframes floatStars {
+  from { opacity: .22; transform: translateY(0); }
+  to { opacity: .42; transform: translateY(16rpx); }
 }
 </style>

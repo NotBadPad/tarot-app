@@ -82,17 +82,12 @@ const handleLogin = async () => {
     }, 1000);
   } catch (err) {
     console.error('登录失败:', err);
-    // 后端不可用时，降级为本地模拟登录
-    const userInfo = {
-      nickName: '塔罗爱好者',
-      avatarUrl: '',
-      isLogin: true
-    };
-    uni.setStorageSync('userInfo', userInfo);
-    uni.showToast({ title: '本地模式登录', icon: 'none' });
+    // Bug #9 Fix: 后端不可用时不能设置 isLogin:true（无 token 会导致所有 API 请求 401）
+    // 改为游客模式，并清楚告知用户当前处于离线状态
+    uni.showToast({ title: '后端暂不可用，以游客模式访问', icon: 'none', duration: 2500 });
     setTimeout(() => {
       uni.switchTab({ url: '/pages/index/index' });
-    }, 1000);
+    }, 1500);
   }
 };
 

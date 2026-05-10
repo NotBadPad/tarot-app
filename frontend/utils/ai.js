@@ -70,7 +70,10 @@ export async function getAIInterpretation({ question, cards, spreadName }) {
 
     if (response.statusCode !== 200) {
       const errorMsg = response.data?.error || `服务器错误 ${response.statusCode}`;
-      throw new Error(errorMsg);
+      // Bug #6 Fix: 把 statusCode 挂到 error 上，供上层判断 401
+      const err = new Error(errorMsg);
+      err.statusCode = response.statusCode;
+      throw err;
     }
 
     const result = response.data;
@@ -88,6 +91,8 @@ export async function getAIInterpretation({ question, cards, spreadName }) {
     console.error('AI 解读请求失败:', error);
     return {
       success: false,
+      // Bug #6 Fix: 传回 status 让调用方可区分 401 与其他错误
+      status: error.statusCode || null,
       error: error.message || '网络请求失败，请检查后端服务是否运行',
       fallback: true
     };
