@@ -89,7 +89,7 @@ import { ref, computed, onMounted } from 'vue';
 import { SPREADS } from '@/data/tarot-data.js';
 import { shuffleDeck, getCardImage, getFallbackCardImage } from '@/utils/tarot.js';
 
-const cardBackImage = '/static/images/card-back.svg';
+const cardBackImage = '/static/images/card-back.jpg';
 
 const spreadId = ref('single');
 const question = ref('');

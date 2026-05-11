@@ -6,7 +6,8 @@
     "dev:h5": "vite --config vite.config.h5.js",
     "build:h5": "vite build --config vite.config.h5.js",
     "build:mp-weixin": "uni build -p mp-weixin",
-    "generate:cards": "node scripts/generate-tarot-cards.mjs"
+    "generate:cards": "node scripts/generate-tarot-cards.mjs",
+    "import:tlp-cards": "node scripts/import-tlp-cards.mjs"
   },
   "dependencies": {
     "semver": "^7.7.4",
