@@ -60,11 +60,6 @@ node server.js
 
 访问: https://tarot.awayy1432.com
 
-## 运维与 Agent 记录
-
-- [近期变更记录](docs/RECENT_CHANGES.md)
-- [Agent 记忆快照（脱敏）](docs/AGENT_MEMORY_SNAPSHOT.md)
-
 ---
 
 Made with ❤️ by [awayy1432](https://github.com/NotBadPad)
