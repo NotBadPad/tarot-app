@@ -75,7 +75,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
+import { onLoad } from '@dcloudio/uni-app';
 import { TAROT_DECK } from '@/data/tarot-data.js';
 import { getCardImage, getFallbackCardImage } from '@/utils/tarot.js';
 
@@ -83,45 +84,25 @@ const card = ref(null);
 const isReversed = ref(false);
 
 const setFallbackImage = (event, cardData) => {
-  event.target.src = getFallbackCardImage(cardData);
+  if (event?.target) {
+    event.target.src = getFallbackCardImage(cardData);
+  }
 };
 
-const getHashPathAndQuery = () => {
-  let path = '';
-  let queryStr = '';
+const getH5PathCardId = () => {
+  if (typeof window === 'undefined' || !window.location) return null;
   if (window.location.hash) {
     const hash = window.location.hash.slice(1); // 去掉 #
     const qIdx = hash.indexOf('?');
-    if (qIdx !== -1) {
-      path = hash.slice(0, qIdx);
-      queryStr = hash.slice(qIdx + 1);
-    } else {
-      path = hash;
-    }
-  } else {
-    path = window.location.pathname;
-    queryStr = window.location.search.slice(1);
+    const path = qIdx !== -1 ? hash.slice(0, qIdx) : hash;
+    return path.match(/\/card\/([^/?#]+)/)?.[1] || null;
   }
-  return { path, query: Object.fromEntries(new URLSearchParams(queryStr)) };
+  return window.location.pathname.match(/\/card\/([^/?#]+)/)?.[1] || null;
 };
 
-onMounted(() => {
-  let id = null;
-  let reversed = false;
-  
-  if (typeof window !== 'undefined' && window.location) {
-    const { path, query } = getHashPathAndQuery();
-    const pathMatch = path.match(/\/card\/([^/?#]+)/);
-    id = query.id || pathMatch?.[1] || null;
-    reversed = query.reversed === 'true';
-  } else {
-    try {
-      const options = uni.getEnterOptionsSync();
-      const query = options.query || {};
-      id = query.id;
-      reversed = query.reversed === 'true';
-    } catch (e) {}
-  }
+onLoad((query = {}) => {
+  const id = query.id || getH5PathCardId();
+  const reversed = query.reversed === 'true';
   
   if (id !== null) {
     const foundCard = TAROT_DECK.find(c => c.id == id);

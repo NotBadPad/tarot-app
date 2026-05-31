@@ -128,7 +128,7 @@ export function formatDate(timestamp) {
  * 获取牌面图片路径（需要用户自己提供图片）
  */
 export function getCardImage(card) {
-  if (!card) return '/static/images/card-back.jpg';
+  if (!card) return getCardBackImage();
   if (card.image) return card.image;
 
   const suit = card.suit || 'major';
@@ -179,7 +179,7 @@ export function getFallbackCardImage(card) {
  * 获取牌背图片
  */
 export function getCardBackImage() {
-  return '/static/images/card-back.jpg';
+  return '/static/images/card-back-moon-strong-border.png';
 }
 
 /**

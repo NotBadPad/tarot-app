@@ -85,11 +85,12 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
+import { onLoad } from '@dcloudio/uni-app';
 import { SPREADS } from '@/data/tarot-data.js';
-import { shuffleDeck, getCardImage, getFallbackCardImage } from '@/utils/tarot.js';
+import { shuffleDeck, getCardImage, getFallbackCardImage, getCardBackImage } from '@/utils/tarot.js';
 
-const cardBackImage = '/static/images/card-back.jpg';
+const cardBackImage = getCardBackImage();
 
 const spreadId = ref('single');
 const question = ref('');
@@ -106,28 +107,24 @@ const totalCards = computed(() => spread.value?.positions.length || 1);
 const remainingCards = computed(() => totalCards.value - currentIndex.value);
 
 const setFallbackImage = (event, card) => {
-  event.target.src = getFallbackCardImage(card);
-};
-
-const getQueryParams = () => {
-  let queryStr = '';
-  if (window.location.hash) {
-    const idx = window.location.hash.indexOf('?');
-    if (idx !== -1) queryStr = window.location.hash.slice(idx + 1);
-  } else {
-    queryStr = window.location.search.slice(1);
+  if (event?.target) {
+    event.target.src = getFallbackCardImage(card);
   }
-  return Object.fromEntries(new URLSearchParams(queryStr));
 };
 
-onMounted(() => {
-  const query = getQueryParams();
+const initPage = (query = {}) => {
   spreadId.value = query.spreadId || 'single';
-  question.value = decodeURIComponent(query.question || '');
+  try {
+    question.value = decodeURIComponent(query.question || '');
+  } catch {
+    question.value = query.question || '';
+  }
   spread.value = SPREADS[spreadId.value] || SPREADS.single;
   spreadId.value = spread.value.id;
   startShuffle();
-});
+};
+
+onLoad(initPage);
 
 const startShuffle = async () => {
   isShuffling.value = true;

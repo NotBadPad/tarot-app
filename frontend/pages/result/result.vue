@@ -89,7 +89,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
+import { onLoad } from '@dcloudio/uni-app';
 import { getCardMeaning, getCardImage, getCardKeywords, getFallbackCardImage } from '@/utils/tarot.js';
 import { getAIInterpretation, getQuickInterpretation } from '@/utils/ai.js';
 
@@ -100,32 +101,17 @@ const hasAIConfig = ref(false);
 const isH5 = typeof window !== 'undefined' && typeof document !== 'undefined';
 
 const setFallbackImage = (event, card) => {
-  event.target.src = getFallbackCardImage(card);
-};
-
-const getQueryParam = (key) => {
-  let queryStr = '';
-  if (window.location.hash) {
-    const idx = window.location.hash.indexOf('?');
-    if (idx !== -1) queryStr = window.location.hash.slice(idx + 1);
-  } else {
-    queryStr = window.location.search.slice(1);
+  if (event?.target) {
+    event.target.src = getFallbackCardImage(card);
   }
-  return new URLSearchParams(queryStr).get(key);
 };
 
-onMounted(() => {
-  let id = null;
-  if (typeof window !== 'undefined' && window.location) {
-    id = getQueryParam('id');
-    // H5 模式下后端与前端同源，始终可用
+onLoad((query = {}) => {
+  const id = query.id || null;
+
+  if (isH5) {
     hasAIConfig.value = true;
   } else {
-    try {
-      const options = uni.getEnterOptionsSync();
-      const query = options.query || {};
-      id = query.id;
-    } catch (e) {}
     const config = uni.getStorageSync('tarot_api_config');
     hasAIConfig.value = !!(config && config.baseURL);
   }

@@ -11,9 +11,9 @@ const root = dirname(fileURLToPath(import.meta.url));
 const sourceDir = process.argv[2] || '/Users/guojing/Documents/tlp';
 const imageRoot = join(root, '..', 'static', 'images');
 const cardsRoot = join(imageRoot, 'cards');
-const width = 512;
-const height = 768;
-const quality = '82';
+const width = 240;
+const height = 360;
+const quality = '65';
 
 const aliases = new Map([
   ['女皇', '皇后'],

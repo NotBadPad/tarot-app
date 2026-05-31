@@ -16,7 +16,7 @@
     <div v-if="!hasDrawn && !showCard" class="draw-area">
       <div class="card-placeholder" :class="{ drawing: isDrawing }" @click="drawCard">
         <div class="card-back">
-          <span class="card-pattern">✦</span>
+          <img :src="cardBackImage" class="card-back-image" mode="aspectFit" />
           <span class="card-text">{{ isDrawing ? '正在聆听星象...' : '点击抽取今日牌运' }}</span>
         </div>
       </div>
@@ -80,13 +80,14 @@ import {
   getTodayCard,
   generateDailyGuidance 
 } from '@/utils/daily.js';
-import { getCardImage, getFallbackCardImage } from '@/utils/tarot.js';
+import { getCardImage, getFallbackCardImage, getCardBackImage } from '@/utils/tarot.js';
 
 const hasDrawn = ref(false);
 const showCard = ref(false);
 const isDrawing = ref(false);
 const dailyCard = ref(null);
 const guidance = ref({ general: '', keywords: [] });
+const cardBackImage = getCardBackImage();
 
 const setFallbackImage = (event, card) => {
   event.target.src = getFallbackCardImage(card);
@@ -263,27 +264,36 @@ const viewHistory = () => {
 .card-back {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #5a2ac9 0%, #9d4edd 48%, #48cae4 100%);
+  background: rgba(9, 8, 23, 0.48);
   border-radius: 20rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 4rpx solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 20rpx 60rpx rgba(123, 44, 191, 0.4), inset 0 1rpx 0 rgba(255,255,255,.16);
+  border: 1rpx solid rgba(242, 200, 121, 0.28);
+  box-shadow: 0 20rpx 60rpx rgba(123, 44, 191, 0.34), inset 0 1rpx 0 rgba(255,255,255,.16);
+  overflow: hidden;
+  position: relative;
 }
 
-.card-pattern {
-  font-size: 80rpx;
-  color: rgba(255, 255, 255, 0.3);
-  margin-bottom: 20rpx;
+.card-back-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card-text {
+  position: absolute;
+  left: 18rpx;
+  right: 18rpx;
+  bottom: 28rpx;
   font-size: 28rpx;
-  color: rgba(255, 255, 255, 0.8);
+  color: white;
+  font-weight: 700;
+  line-height: 1.35;
   text-align: center;
-  padding: 0 40rpx;
+  padding: 0 18rpx;
+  text-shadow: 0 3rpx 12rpx rgba(0, 0, 0, 0.86);
 }
 
 .draw-hint {
