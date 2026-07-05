@@ -1,6 +1,7 @@
 // 塔罗牌核心逻辑工具函数
 
 import { TAROT_DECK, SPREADS } from '../data/tarot-data.js';
+import { isEn } from './i18n.js';
 
 /**
  * 洗牌 - Fisher-Yates 洗牌算法
@@ -133,6 +134,7 @@ export function getCardImage(card) {
 
   const suit = card.suit || 'major';
   const number = card.number !== undefined ? card.number : card.id;
+  if (isEn.value) return `/static/images/cards-en/${suit}/${number}.svg`;
   return `/static/images/cards/${suit}/${number}.jpg`;
 }
 

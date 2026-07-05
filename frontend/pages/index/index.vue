@@ -7,31 +7,32 @@
     <div class="header">
       <div class="user-section" @click="goToLogin">
         <div class="user-avatar">
-          <span class="avatar-text">{{ userInfo.isLogin && userInfo.nickName ? userInfo.nickName[0] : '人' }}</span>
+          <span class="avatar-text">{{ userInfo.isLogin && userInfo.nickName ? userInfo.nickName[0] : t('guest')[0] }}</span>
         </div>
-        <span class="user-name">{{ userInfo.isLogin ? userInfo.nickName : '点击登录' }}</span>
+        <span class="user-name">{{ userInfo.isLogin ? userInfo.nickName : t('login') }}</span>
       </div>
-      <span class="title">🔮 塔罗梦语</span>
-      <span class="subtitle">探索内心的智慧之镜</span>
+      <button class="lang-btn" @click.stop="toggleLocale">{{ t('language') }}</button>
+      <span class="title">🔮 {{ t('appName') }}</span>
+      <span class="subtitle">{{ t('tagline') }}</span>
     </div>
     
     <!-- 快速入口 -->
     <div class="quick-actions">
       <div class="action-card daily" @click="goToDaily">
         <span class="action-icon">🌙</span>
-        <span class="action-name">每日一抽</span>
-        <span class="action-desc">今天的塔罗指引</span>
+        <span class="action-name">{{ t('daily') }}</span>
+        <span class="action-desc">{{ t('dailyDesc') }}</span>
       </div>
       <div class="action-card cards" @click="browseCards">
         <span class="action-icon">📜</span>
-        <span class="action-name">牌意查询</span>
-        <span class="action-desc">78张牌详解</span>
+        <span class="action-name">{{ t('cardSearch') }}</span>
+        <span class="action-desc">{{ t('cardSearchDesc') }}</span>
       </div>
     </div>
     
     <!-- 牌阵选择 -->
     <div class="spread-section">
-      <span class="section-title">选择牌阵</span>
+      <span class="section-title">{{ t('selectSpread') }}</span>
       <div class="spread-list">
         <div 
           v-for="spread in spreads" 
@@ -40,20 +41,20 @@
           :class="{ active: selectedSpread === spread.id }"
           @click="selectSpread(spread.id)"
         >
-          <span class="spread-name">{{ spread.name }}</span>
-          <span class="spread-desc">{{ spread.description }}</span>
-          <span class="spread-count">{{ spread.positions.length }}张牌</span>
+          <span class="spread-name">{{ spreadName(spread) }}</span>
+          <span class="spread-desc">{{ spreadDesc(spread) }}</span>
+          <span class="spread-count">{{ cardCount(spread.positions.length) }}</span>
         </div>
       </div>
     </div>
     
     <!-- 问题输入 -->
     <div class="question-section">
-      <span class="section-title">你的问题（可选）</span>
+      <span class="section-title">{{ t('questionOptional') }}</span>
       <textarea
         v-model="question"
         class="question-input"
-        placeholder="例如：我最近的工作运势如何？或者留空让牌卡自由告诉你..."
+        :placeholder="t('questionPlaceholder')"
         maxlength="100"
       />
       <span class="char-count">{{ question.length }}/100</span>
@@ -61,12 +62,12 @@
     
     <!-- 开始按钮 -->
     <button class="start-btn" @click="startReading">
-      <span class="btn-text">🃏 开始洗牌</span>
+      <span class="btn-text">{{ t('startShuffle') }}</span>
     </button>
     
     <!-- 简介 -->
     <div class="intro">
-      <span class="intro-text">塔罗牌是自反的工具，回答始于你内心</span>
+      <span class="intro-text">{{ t('intro') }}</span>
     </div>
   </div>
 </template>
@@ -74,6 +75,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { SPREADS } from '@/data/tarot-data.js';
+import { cardCount, isEn, spreadName, t, toggleLocale } from '@/utils/i18n.js';
 
 const spreads = Object.values(SPREADS);
 const selectedSpread = ref('single');
@@ -103,8 +105,19 @@ const goToDaily = () => {
 };
 
 const browseCards = () => {
-  uni.showToast({ title: '即将上线，敬请期待', icon: 'none' });
+  uni.showToast({ title: t('comingSoon'), icon: 'none' });
 };
+
+const spreadDescMap = {
+  single: 'The simplest way to answer one clear question',
+  three: 'Explore the flow of past, present, and future',
+  relationship: 'Understand the dynamics between two people',
+  decision: 'Compare two options before choosing',
+  career: 'Explore six dimensions of career growth',
+  celtic: 'A classic ten-card spread for deeper questions'
+};
+
+const spreadDesc = (spread) => isEn.value ? (spreadDescMap[spread.id] || spread.description) : spread.description;
 
 const startReading = () => {
   uni.navigateTo({
@@ -182,6 +195,19 @@ const startReading = () => {
 .user-name {
   font-size: 20rpx;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.lang-btn {
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  border: 1rpx solid rgba(242, 200, 121, 0.34);
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffe29a;
+  font-size: 22rpx;
+  line-height: 1;
 }
 
 .title {

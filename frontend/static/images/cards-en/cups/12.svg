@@ -1,0 +1,5 @@
+<svg width="240" height="360" viewBox="0 0 240 360" xmlns="http://www.w3.org/2000/svg">
+  <image href="../../cards/cups/12.jpg" x="0" y="0" width="240" height="360" preserveAspectRatio="none"/>
+  <rect x="45" y="319" width="150" height="25" rx="10" fill="#f3ead2" opacity=".96"/>
+  <text x="120" y="337" text-anchor="middle" fill="#3a2a16" font-size="15" font-weight="600" font-family="Georgia, 'Times New Roman', serif">Knight of Cups</text>
+</svg>

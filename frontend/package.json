@@ -6,7 +6,9 @@
     "dev:h5": "vite --config vite.config.h5.js",
     "build:h5": "vite build --config vite.config.h5.js",
     "build:mp-weixin": "UNI_INPUT_DIR=$PWD uni build -p mp-weixin",
+    "test:smoke": "node scripts/self-check-i18n.mjs",
     "generate:cards": "node scripts/generate-tarot-cards.mjs",
+    "generate:cards:i18n": "node scripts/generate-localized-card-images.mjs",
     "import:tlp-cards": "node scripts/import-tlp-cards.mjs"
   },
   "dependencies": {

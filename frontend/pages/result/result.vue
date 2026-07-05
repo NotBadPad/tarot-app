@@ -4,16 +4,16 @@
     
     <!-- 标题 -->
     <div class="header">
-      <span class="spread-name">{{ reading?.spreadName }}</span>
+      <span class="spread-name">{{ displaySpreadName(reading) }}</span>
       <span v-if="reading?.question" class="question">"{{ reading.question }}"</span>
       <span class="time">{{ formatTime(reading?.timestamp) }}</span>
     </div>
     
     <div v-if="!reading" class="empty-result">
-      <span class="empty-title">没有找到这次占卜</span>
-      <span class="empty-hint">可能是记录已被清除，重新抽一次会更准。</span>
+      <span class="empty-title">{{ t('noReading') }}</span>
+      <span class="empty-hint">{{ t('noReadingHint') }}</span>
       <button class="ai-btn" @click="drawAgain">
-        <span class="btn-text">重新开始</span>
+        <span class="btn-text">{{ t('restart') }}</span>
       </button>
     </div>
 
@@ -25,11 +25,11 @@
         class="card-item"
         :class="{ reversed: card.isReversed }"
       >
-        <div class="position-badge">{{ card.position?.name }}</div>
+        <div class="position-badge">{{ positionName(card.position) }}</div>
         <img :src="getCardImage(card)" class="card-image" mode="aspectFit" @error="setFallbackImage($event, card)" />
         <div class="card-info">
-          <span class="card-name">{{ card.name }}</span>
-          <span class="orientation">{{ card.isReversed ? '逆位' : '正位' }}</span>
+          <span class="card-name">{{ cardName(card) }}</span>
+          <span class="orientation">{{ orientation(card.isReversed) }}</span>
           <div class="keywords">
             <span 
               v-for="(kw, i) in getKeywords(card)" 
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="meaning-box">
-          <span class="meaning-title">核心含义</span>
+          <span class="meaning-title">{{ t('coreMeaning') }}</span>
           <span class="meaning-text">{{ getCardMeaning(card) }}</span>
         </div>
       </div>
@@ -48,13 +48,13 @@
     <!-- AI 解读 -->
     <div class="interpretation-section">
       <div class="section-header">
-        <span class="section-title">🔮 智能解读</span>
+        <span class="section-title">{{ t('smartReading') }}</span>
       </div>
       
       <!-- 加载状态 -->
       <div v-if="loading" class="loading-box">
         <div class="loading-spinner"></div>
-        <span class="loading-text">正在获取解读...</span>
+        <span class="loading-text">{{ t('loadingReading') }}</span>
       </div>
       
       <!-- 解读内容 -->
@@ -70,7 +70,7 @@
         @click="getInterpretation"
         :disabled="loading"
       >
-        <span class="btn-text">{{ hasAIConfig ? '获取 AI 解读' : '获取基础解读' }}</span>
+        <span class="btn-text">{{ hasAIConfig ? t('getAiReading') : t('getBasicReading') }}</span>
       </button>
     </div>
     
@@ -78,11 +78,11 @@
     <div class="actions">
       <button class="action-btn secondary" @click="shareResult">
         <span class="btn-icon">📤</span>
-        <span class="btn-text">分享</span>
+        <span class="btn-text">{{ t('share') }}</span>
       </button>
       <button class="action-btn primary" @click="drawAgain">
         <span class="btn-icon">🃏</span>
-        <span class="btn-text">再抽一次</span>
+        <span class="btn-text">{{ t('drawAgain') }}</span>
       </button>
     </div>
   </div>
@@ -93,6 +93,7 @@ import { ref } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 import { getCardMeaning, getCardImage, getCardKeywords, getFallbackCardImage } from '@/utils/tarot.js';
 import { getAIInterpretation, getQuickInterpretation } from '@/utils/ai.js';
+import { cardName, isEn, orientation, positionName, spreadName, t } from '@/utils/i18n.js';
 
 const reading = ref(null);
 const interpretation = ref('');
@@ -125,18 +126,23 @@ onLoad((query = {}) => {
 const formatTime = (timestamp) => {
   if (!timestamp) return '';
   const date = new Date(parseInt(timestamp));
-  return `${date.getMonth() + 1}月${date.getDate()}日 ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
+  const time = `${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
+  return isEn.value
+    ? `${date.toLocaleString('en-US', { month: 'short' })} ${date.getDate()} ${time}`
+    : `${date.getMonth() + 1}月${date.getDate()}日 ${time}`;
 };
+
+const displaySpreadName = (item) => item?.spread ? spreadName(item.spread) : (isEn.value ? (item?.spreadNameEn || item?.spreadName) : item?.spreadName);
 
 const getKeywords = (card) => {
   if (!card.keywords) return [];
   const kws = card.keywords.slice(0, 3);
-  return card.isReversed ? kws.map(k => k + '(逆)') : kws;
+  return card.isReversed ? kws.map(k => isEn.value ? `${k} (rev)` : `${k}(逆)`) : kws;
 };
 
 const getInterpretation = async () => {
   if (!reading.value) {
-    uni.showToast({ title: '没有可解读的占卜记录', icon: 'none' });
+      uni.showToast({ title: t('noReading'), icon: 'none' });
     return;
   }
 
@@ -198,12 +204,12 @@ const formatInterpretation = (text) => {
 const shareResult = () => {
   if (!reading.value) return;
   // 生成图片或文本分享
-  const text = `🔮 塔罗梦语\n\n${reading.value.spreadName}\n${reading.value.question ? '问题: ' + reading.value.question + '\n' : ''}\n抽到的牌:\n${reading.value.cards.map((c, i) => `${i+1}. ${c.name} ${c.isReversed ? '逆位' : '正位'}`).join('\n')}`;
+  const text = `🔮 ${t('appName')}\n\n${displaySpreadName(reading.value)}\n${reading.value.question ? `${t('shareQuestion')}: ${reading.value.question}\n` : ''}${t('drawnCards')}:\n${reading.value.cards.map((c, i) => `${i+1}. ${cardName(c)} ${orientation(c.isReversed)}`).join('\n')}`;
   
   uni.setClipboardData({
     data: text,
     success: () => {
-      uni.showToast({ title: '已复制结果', icon: 'success' });
+      uni.showToast({ title: t('copiedResult'), icon: 'success' });
     }
   });
 };

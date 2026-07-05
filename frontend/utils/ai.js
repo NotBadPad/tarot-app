@@ -1,5 +1,6 @@
 // AI 塔罗解读接口（走服务端代理）
 // 不再直接调用第三方 AI API，所有请求通过后端代理，保护 API Key 安全
+import { cardName, isEn, orientation, positionName } from './i18n.js';
 
 // 服务端基础地址
 export const getBaseURL = () => {
@@ -119,20 +120,29 @@ export function getApiConfig() {
 export function getQuickInterpretation(cards) {
   const interpretations = cards.map(card => {
     const meaning = card.isReversed
-      ? (card.meaning?.reversed || '需要反思与调整')
-      : (card.meaning?.upright || '积极的能量正在涌动');
+      ? (isEn.value ? 'Reflection and adjustment are needed.' : (card.meaning?.reversed || '需要反思与调整'))
+      : (isEn.value ? 'Constructive energy is moving now.' : (card.meaning?.upright || '积极的能量正在涌动'));
 
-    const keywords = (card.keywords || []).slice(0, 3).join('、');
+    const keywords = (card.keywords || []).slice(0, 3).join(isEn.value ? ', ' : '、');
+    const position = positionName(card.position);
+    if (isEn.value) {
+      return `**${cardName(card)}** ${orientation(card.isReversed)}
+${position ? `Position: ${position}` : ''}
+${keywords ? `Keywords: ${keywords}` : ''}
+Core message: ${meaning}`;
+    }
 
-    return `**${card.name}** ${card.isReversed ? '逆位' : '正位'}
-${card.position?.name ? `位置：${card.position.name}` : ''}
+    return `**${card.name}** ${orientation(card.isReversed)}
+${position ? `位置：${position}` : ''}
 ${keywords ? `关键词：${keywords}` : ''}
 核心信息：${meaning.split('。')[0]}。`;
   }).join('\n\n');
 
   return {
     success: true,
-    interpretation: `抽到的牌：\n\n${interpretations}\n\n---\n\n这是基于牌面含义的简要解读。\n想获得更深入的 AI 智能解读，请确保后端服务正常运行。`,
+    interpretation: isEn.value
+      ? `Drawn cards:\n\n${interpretations}\n\n---\n\nThis is a brief local reading based on card meanings. For deeper AI insight, make sure the backend service is available.`
+      : `抽到的牌：\n\n${interpretations}\n\n---\n\n这是基于牌面含义的简要解读。\n想获得更深入的 AI 智能解读，请确保后端服务正常运行。`,
     timestamp: Date.now(),
     isQuick: true
   };

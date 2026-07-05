@@ -4,7 +4,7 @@
     
     <!-- 标题 -->
     <div class="header">
-      <span class="title">每日一抽</span>
+      <span class="title">{{ t('daily') }}</span>
       <span class="subtitle">{{ todayDate }}</span>
       <div class="moon-phase">
         <span class="moon-icon">{{ moonPhase.icon }}</span>
@@ -17,10 +17,10 @@
       <div class="card-placeholder" :class="{ drawing: isDrawing }" @click="drawCard">
         <div class="card-back">
           <img :src="cardBackImage" class="card-back-image" mode="aspectFit" />
-          <span class="card-text">{{ isDrawing ? '正在聆听星象...' : '点击抽取今日牌运' }}</span>
+          <span class="card-text">{{ isDrawing ? t('dailyListening') : t('dailyDraw') }}</span>
         </div>
       </div>
-      <span class="draw-hint">每天只有一次机会，集中精神思考今天的期许</span>
+      <span class="draw-hint">{{ t('dailyHint') }}</span>
     </div>
     
     <!-- 结果展示 -->
@@ -34,14 +34,14 @@
           @error="setFallbackImage($event, dailyCard)"
         />
         <div class="card-info">
-          <span class="card-name">{{ dailyCard?.name }}</span>
-          <span class="orientation">{{ dailyCard?.isReversed ? '逆位' : '正位' }}</span>
+          <span class="card-name">{{ cardName(dailyCard) }}</span>
+          <span class="orientation">{{ orientation(dailyCard?.isReversed) }}</span>
         </div>
       </div>
       
       <!-- 指引文本 -->
       <div class="guidance-box">
-        <span class="guidance-title">🔮 今日指引</span>
+        <span class="guidance-title">{{ t('dailyGuide') }}</span>
         <span class="guidance-text">{{ guidance.general }}</span>
         <div class="keywords">
           <span 
@@ -56,18 +56,18 @@
       <div class="actions">
         <button class="action-btn" @click="viewCardDetail">
           <span class="btn-icon">📜</span>
-          <span class="btn-text">查看详情</span>
+          <span class="btn-text">{{ t('detail') }}</span>
         </button>
         <button class="action-btn primary" @click="shareDaily">
           <span class="btn-icon">📤</span>
-          <span class="btn-text">分享日运</span>
+          <span class="btn-text">{{ t('shareDaily') }}</span>
         </button>
       </div>
     </div>
     
     <!-- 历史记录入口 -->
     <div class="history-entry" @click="viewHistory">
-      <span class="history-text">查看历史日运 →</span>
+      <span class="history-text">{{ t('dailyHistory') }}</span>
     </div>
   </div>
 </template>
@@ -81,6 +81,7 @@ import {
   generateDailyGuidance 
 } from '@/utils/daily.js';
 import { getCardImage, getFallbackCardImage, getCardBackImage } from '@/utils/tarot.js';
+import { cardName, isEn, orientation, t } from '@/utils/i18n.js';
 
 const hasDrawn = ref(false);
 const showCard = ref(false);
@@ -103,7 +104,7 @@ onMounted(() => {
   hasDrawn.value = hasDrawnToday();
   if (hasDrawn.value) {
     dailyCard.value = getTodayCard();
-    guidance.value = generateDailyGuidance(dailyCard.value);
+    guidance.value = generateDailyGuidance(dailyCard.value, isEn.value ? 'en' : 'zh');
     showCard.value = true;
   }
 });
@@ -111,18 +112,21 @@ onMounted(() => {
 const initDate = () => {
   const date = new Date();
   const weekDays = ['日', '一', '二', '三', '四', '五', '六'];
-  todayDate.value = `${date.getMonth() + 1}月${date.getDate()}日 星期${weekDays[date.getDay()]}`;
+  const weekDaysEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  todayDate.value = isEn.value
+    ? `${date.toLocaleString('en-US', { month: 'short' })} ${date.getDate()}, ${weekDaysEn[date.getDay()]}`
+    : `${date.getMonth() + 1}月${date.getDate()}日 星期${weekDays[date.getDay()]}`;
   
   // 简单的月相计算（基于日期）
   const day = date.getDate();
   if (day < 7) {
-    moonPhase.value = { icon: '🌑', name: '新月' };
+    moonPhase.value = { icon: '🌑', name: isEn.value ? 'New Moon' : '新月' };
   } else if (day < 14) {
-    moonPhase.value = { icon: '🌒', name: '上弦月' };
+    moonPhase.value = { icon: '🌒', name: isEn.value ? 'Waxing Moon' : '上弦月' };
   } else if (day < 22) {
-    moonPhase.value = { icon: '🌕', name: '满月' };
+    moonPhase.value = { icon: '🌕', name: isEn.value ? 'Full Moon' : '满月' };
   } else {
-    moonPhase.value = { icon: '🌘', name: '下弦月' };
+    moonPhase.value = { icon: '🌘', name: isEn.value ? 'Waning Moon' : '下弦月' };
   }
 };
 
@@ -138,7 +142,7 @@ const drawCard = () => {
   
   setTimeout(() => {
     dailyCard.value = drawDailyCard();
-    guidance.value = generateDailyGuidance(dailyCard.value);
+    guidance.value = generateDailyGuidance(dailyCard.value, isEn.value ? 'en' : 'zh');
     hasDrawn.value = true;
     showCard.value = true;
     isDrawing.value = false;
@@ -153,12 +157,12 @@ const viewCardDetail = () => {
 };
 
 const shareDaily = () => {
-  const text = `🔮 ${todayDate.value} 每日塔罗\n\n抽到牌：${dailyCard.value.name} ${dailyCard.value.isReversed ? '逆位' : '正位'}\n\n今日指引：${guidance.value.general}`;
+  const text = `🔮 ${todayDate.value} ${t('daily')}\n\n${t('drawnCards')}: ${cardName(dailyCard.value)} ${orientation(dailyCard.value.isReversed)}\n\n${t('dailyGuide')}: ${guidance.value.general}`;
   
   uni.setClipboardData({
     data: text,
     success: () => {
-      uni.showToast({ title: '已复制，去分享吧~', icon: 'none' });
+      uni.showToast({ title: t('copiedShare'), icon: 'none' });
     }
   });
 };

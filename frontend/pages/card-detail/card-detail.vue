@@ -6,24 +6,24 @@
     <div class="card-display" :class="{ reversed: isReversed }">
       <img :src="getCardImage(card)" class="card-image" mode="aspectFit" @error="setFallbackImage($event, card)" />
       <div class="orientation-toggle" @click="toggleOrientation">
-        <span class="toggle-text">{{ isReversed ? '切换正位' : '切换逆位' }}</span>
+        <span class="toggle-text">{{ isReversed ? t('switchUpright') : t('switchReversed') }}</span>
       </div>
     </div>
     
     <!-- 基本信息 -->
     <div class="info-section">
-      <span class="card-name">{{ card?.name }}</span>
+      <span class="card-name">{{ cardName(card) }}</span>
       <span class="card-en">{{ card?.nameEn }}</span>
       <div class="meta-info">
-        <span v-if="card?.roman" class="meta-item">罗马数字: {{ card.roman }}</span>
-        <span v-if="card?.element" class="meta-item">元素: {{ card.element }}</span>
-        <span v-if="card?.planet" class="meta-item">星体: {{ card.planet }}</span>
+        <span v-if="card?.roman" class="meta-item">{{ isEn ? 'Roman' : '罗马数字' }}: {{ card.roman }}</span>
+        <span v-if="card?.element" class="meta-item">{{ isEn ? 'Element' : '元素' }}: {{ displayElement(card.element) }}</span>
+        <span v-if="card?.planet" class="meta-item">{{ isEn ? 'Planet' : '星体' }}: {{ displayPlanet(card.planet) }}</span>
       </div>
     </div>
     
     <!-- 关键词 -->
     <div class="keywords-section">
-      <span class="section-title">关键词</span>
+      <span class="section-title">{{ t('cardKeywords') }}</span>
       <div class="keywords-list">
         <span 
           v-for="(kw, i) in displayKeywords" 
@@ -36,30 +36,30 @@
     
     <!-- 含义解读 -->
     <div class="meaning-section">
-      <span class="section-title">{{ isReversed ? '逆位含义' : '正位含义' }}</span>
+      <span class="section-title">{{ isReversed ? t('reversedMeaning') : t('uprightMeaning') }}</span>
       <span class="meaning-text">{{ currentMeaning }}</span>
     </div>
     
     <!-- 描述 -->
     <div v-if="card?.description" class="description-section">
-      <span class="section-title">牌面描述</span>
+      <span class="section-title">{{ t('cardDescription') }}</span>
       <span class="description-text">{{ card.description }}</span>
     </div>
     
     <!-- 相关建议 -->
     <div class="advice-section">
-      <span class="section-title">生活建议</span>
+      <span class="section-title">{{ t('lifeAdvice') }}</span>
       <div class="advice-list">
         <div class="advice-item">
-          <span class="advice-label">💖 感情</span>
+          <span class="advice-label">{{ t('love') }}</span>
           <span class="advice-text">{{ getLoveAdvice() }}</span>
         </div>
         <div class="advice-item">
-          <span class="advice-label">💼 事业</span>
+          <span class="advice-label">{{ t('career') }}</span>
           <span class="advice-text">{{ getCareerAdvice() }}</span>
         </div>
         <div class="advice-item">
-          <span class="advice-label">✨ 成长</span>
+          <span class="advice-label">{{ t('growth') }}</span>
           <span class="advice-text">{{ getGrowthAdvice() }}</span>
         </div>
       </div>
@@ -68,7 +68,7 @@
     <!-- 操作按钮 -->
     <div class="actions">
       <button class="action-btn" @click="drawAgain">
-        <span class="btn-text">用这张牌占卜</span>
+        <span class="btn-text">{{ t('useCard') }}</span>
       </button>
     </div>
   </div>
@@ -79,6 +79,7 @@ import { ref, computed } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 import { TAROT_DECK } from '@/data/tarot-data.js';
 import { getCardImage, getFallbackCardImage } from '@/utils/tarot.js';
+import { cardName, isEn, t } from '@/utils/i18n.js';
 
 const card = ref(null);
 const isReversed = ref(false);
@@ -115,11 +116,17 @@ onLoad((query = {}) => {
 
 const displayKeywords = computed(() => {
   if (!card.value?.keywords) return [];
+  if (isEn.value) return isReversed.value ? ['blocked energy', 'reflection', 'adjustment'] : ['insight', 'movement', 'awareness'];
   return isReversed.value ? card.value.keywords.map(e => e + '(逆)') : card.value.keywords;
 });
 
 const currentMeaning = computed(() => {
-  if (!card.value?.meaning) return '暂无解读';
+  if (!card.value?.meaning) return t('noMeaning');
+  if (isEn.value) {
+    return isReversed.value
+      ? 'This card points to blocked or inverted energy. Slow down, observe the pattern, and adjust before moving forward.'
+      : 'This card brings useful guidance for the present moment. Notice what it reflects, then choose one grounded next step.';
+  }
   return isReversed.value ? card.value.meaning.reversed : card.value.meaning.upright;
 });
 
@@ -131,10 +138,10 @@ const getLoveAdvice = () => {
   const elMap = { '火': 'fire', '水': 'water', '风': 'air', '土': 'earth', fire: 'fire', water: 'water', air: 'air', earth: 'earth' };
   const element = elMap[card.value?.element] || 'fire';
   const adviceMap = {
-    fire: { upright: '热情的表达会带来美好结果', reversed: '需要冷静思考感情中的问题' },
-    water: { upright: '直觉会引导你找到真爱', reversed: '不要被情绪淹没理性' },
-    air: { upright: '沟通是维系关系的关键', reversed: '避免过度分析对方的话语' },
-    earth: { upright: '稳定和安全感是感情的基础', reversed: '不要过于物质化感情' }
+    fire: { upright: isEn.value ? 'Warm expression can open the door.' : '热情的表达会带来美好结果', reversed: isEn.value ? 'Pause before reacting in love.' : '需要冷静思考感情中的问题' },
+    water: { upright: isEn.value ? 'Trust your emotional intuition.' : '直觉会引导你找到真爱', reversed: isEn.value ? 'Do not let emotion drown reason.' : '不要被情绪淹没理性' },
+    air: { upright: isEn.value ? 'Clear communication protects connection.' : '沟通是维系关系的关键', reversed: isEn.value ? 'Avoid overanalyzing every word.' : '避免过度分析对方的话语' },
+    earth: { upright: isEn.value ? 'Stability is the base of trust.' : '稳定和安全感是感情的基础', reversed: isEn.value ? 'Do not turn love into accounting.' : '不要过于物质化感情' }
   };
   return adviceMap[element][isReversed.value ? 'reversed' : 'upright'];
 };
@@ -143,16 +150,27 @@ const getCareerAdvice = () => {
   const elMap = { '火': 'fire', '水': 'water', '风': 'air', '土': 'earth', fire: 'fire', water: 'water', air: 'air', earth: 'earth' };
   const element = elMap[card.value?.element] || 'fire';
   const adviceMap = {
-    fire: { upright: '主动争取机会，展现领导力', reversed: '避免冲动决策，多听建议' },
-    water: { upright: '用直觉做出选择，相信自己', reversed: '别让情绪影响职场判断' },
-    air: { upright: '清晰的思维帮你解决复杂问题', reversed: '注意细节，避免理论化' },
-    earth: { upright: '踏实工作会得到回报', reversed: '不要固执于旧有方式' }
+    fire: { upright: isEn.value ? 'Take initiative and show leadership.' : '主动争取机会，展现领导力', reversed: isEn.value ? 'Avoid impulsive career choices.' : '避免冲动决策，多听建议' },
+    water: { upright: isEn.value ? 'Let intuition inform your choice.' : '用直觉做出选择，相信自己', reversed: isEn.value ? 'Keep emotion out of work judgment.' : '别让情绪影响职场判断' },
+    air: { upright: isEn.value ? 'Clear thinking solves complex issues.' : '清晰的思维帮你解决复杂问题', reversed: isEn.value ? 'Mind the details, not just theory.' : '注意细节，避免理论化' },
+    earth: { upright: isEn.value ? 'Steady work brings returns.' : '踏实工作会得到回报', reversed: isEn.value ? 'Do not cling to old methods.' : '不要固执于旧有方式' }
   };
   return adviceMap[element][isReversed.value ? 'reversed' : 'upright'];
 };
 
 const getGrowthAdvice = () => {
+  if (isEn.value) return isReversed.value ? 'Reflect before starting again.' : 'Stay open. A new opportunity is near.';
   return isReversed.value ? '今天适合内省，反思过去，为新的开始做准备。' : '保持开放心态，新的机会正在靠近，准备好迎接变化。';
+};
+
+const displayElement = (element) => {
+  if (!isEn.value) return element;
+  return ({ 火: 'Fire', 水: 'Water', 风: 'Air', 土: 'Earth' })[element] || element;
+};
+
+const displayPlanet = (planet) => {
+  if (!isEn.value) return planet;
+  return ({ 天王星: 'Uranus', 水星: 'Mercury', 月亮: 'Moon', 金星: 'Venus', 火星: 'Mars', 木星: 'Jupiter', 太阳: 'Sun', 海王星: 'Neptune', 冥王星: 'Pluto' })[planet] || planet;
 };
 
 const drawAgain = () => {

@@ -3,8 +3,8 @@
     <div class="stars"></div>
     
     <div class="header">
-      <h1 class="title">🔮 塔罗梦语</h1>
-      <p class="subtitle">登录后同步你的占卜记录</p>
+      <h1 class="title">🔮 {{ t('appName') }}</h1>
+      <p class="subtitle">{{ t('loginSubtitle') }}</p>
     </div>
     
     <div class="login-card">
@@ -12,20 +12,20 @@
         <div class="avatar-placeholder">
           <span class="avatar-icon">👤</span>
         </div>
-        <p class="welcome-text">欢迎回来</p>
+        <p class="welcome-text">{{ t('welcomeBack') }}</p>
       </div>
       
       <div class="login-btn" @click="handleLogin">
         <span class="btn-icon">👻</span>
-        <span class="btn-text">微信一键登录</span>
+        <span class="btn-text">{{ t('wechatLogin') }}</span>
       </div>
       
       <div class="guest-btn" @click="skipLogin">
-        <span class="btn-text">游客访问</span>
+        <span class="btn-text">{{ t('guestAccess') }}</span>
       </div>
       
       <p class="privacy-text">
-        登录即表示您同意《用户协议》和《隐私政策》
+        {{ t('privacy') }}
       </p>
     </div>
   </div>
@@ -33,6 +33,7 @@
 
 <script setup>
 import { getBaseURL } from '@/utils/ai.js';
+import { t } from '@/utils/i18n.js';
 
 const handleLogin = async () => {
   // H5 模式下走游客登录流程：注册+登录后端，获取真实 token
@@ -75,7 +76,7 @@ const handleLogin = async () => {
     };
 
     uni.setStorageSync('userInfo', userInfo);
-    uni.showToast({ title: '登录成功', icon: 'success' });
+    uni.showToast({ title: t('loginSuccess'), icon: 'success' });
 
     setTimeout(() => {
       uni.switchTab({ url: '/pages/index/index' });
@@ -84,7 +85,7 @@ const handleLogin = async () => {
     console.error('登录失败:', err);
     // Bug #9 Fix: 后端不可用时不能设置 isLogin:true（无 token 会导致所有 API 请求 401）
     // 改为游客模式，并清楚告知用户当前处于离线状态
-    uni.showToast({ title: '后端暂不可用，以游客模式访问', icon: 'none', duration: 2500 });
+    uni.showToast({ title: t('offlineGuest'), icon: 'none', duration: 2500 });
     setTimeout(() => {
       uni.switchTab({ url: '/pages/index/index' });
     }, 1500);

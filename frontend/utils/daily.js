@@ -146,51 +146,37 @@ function getUserIdentifier() {
 /**
  * 生成每日指引文本
  */
-export function generateDailyGuidance(card) {
-  const meanings = {
-    love: {
-      upright: '今天在感情方面保持开放和真诚，可能会有意想不到的收获。',
-      reversed: '今天需要更多自我关爱，不要急于投入新的感情。'
-    },
-    work: {
-      upright: '工作上会有新的机会，保持积极主动的态度。',
-      reversed: '今天适合整理和规划，不要急于推进新项目。'
-    },
-    health: {
-      upright: '精力充沛的一天，适合运动或尝试新事物。',
-      reversed: '注意休息，不要过度消耗自己的能量。'
-    }
-  };
-  
+export function generateDailyGuidance(card, lang = 'zh') {
+  const en = lang === 'en';
   // 根据牌的元素类型给出建议
   let guidance = '';
   
   if (card.element === '火') {
     guidance = card.isReversed 
-      ? '今天适合放慢脚步，避免冲动决策。给自己一些思考的空间。'
-      : '今天充满行动力和热情，是开始新项目的好时机！';
+      ? (en ? 'Slow down today and avoid impulsive decisions. Give yourself room to think.' : '今天适合放慢脚步，避免冲动决策。给自己一些思考的空间。')
+      : (en ? 'Today carries action and passion. A good time to begin something new.' : '今天充满行动力和热情，是开始新项目的好时机！');
   } else if (card.element === '水') {
     guidance = card.isReversed
-      ? '情绪波动可能较大，尝试冥想或独处来平复心情。'
-      : '直觉敏锐的一天，相信你的内心感受，它会指引你。';
+      ? (en ? 'Emotions may fluctuate. Meditation or quiet time can help you settle.' : '情绪波动可能较大，尝试冥想或独处来平复心情。')
+      : (en ? 'Your intuition is sharp today. Trust the inner signal that guides you.' : '直觉敏锐的一天，相信你的内心感受，它会指引你。');
   } else if (card.element === '风') {
     guidance = card.isReversed
-      ? '沟通可能遇到障碍，注意表达方式，多倾听他人。'
-      : '思维清晰，适合学习、沟通或制定计划。';
+      ? (en ? 'Communication may be blocked. Speak carefully and listen more.' : '沟通可能遇到障碍，注意表达方式，多倾听他人。')
+      : (en ? 'Your mind is clear. It is a good day to learn, talk, or make plans.' : '思维清晰，适合学习、沟通或制定计划。');
   } else if (card.element === '土') {
     guidance = card.isReversed
-      ? '财务或物质方面需要谨慎，避免不必要的支出。'
-      : '踏实稳定的一天，适合处理实际事务和财务规划。';
+      ? (en ? 'Be careful with money and material choices. Avoid unnecessary spending.' : '财务或物质方面需要谨慎，避免不必要的支出。')
+      : (en ? 'A grounded, steady day. Handle practical tasks and financial planning.' : '踏实稳定的一天，适合处理实际事务和财务规划。');
   } else {
     // 大阿尔卡纳
     guidance = card.isReversed
-      ? '今天可能会面临一些内在的挑战，这是成长的机会。'
-      : '重要的能量流动中，留意生活中的同步性和巧合。';
+      ? (en ? 'An inner challenge may appear today. Treat it as a chance to grow.' : '今天可能会面临一些内在的挑战，这是成长的机会。')
+      : (en ? 'Important energy is moving. Notice synchronicities and meaningful coincidences.' : '重要的能量流动中，留意生活中的同步性和巧合。');
   }
   
   return {
     general: guidance,
-    keywords: card.keywords?.slice(0, 3) || ['变化', '成长', '觉察']
+    keywords: en ? ['change', 'growth', 'awareness'] : (card.keywords?.slice(0, 3) || ['变化', '成长', '觉察'])
   };
 }
 

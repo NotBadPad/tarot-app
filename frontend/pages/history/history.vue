@@ -3,16 +3,16 @@
     <div class="stars"></div>
     
     <div class="header">
-      <span class="title">历史记录</span>
-      <span class="subtitle">你的占卜旅程</span>
+      <span class="title">{{ t('history') }}</span>
+      <span class="subtitle">{{ t('historySubtitle') }}</span>
     </div>
     
     <div v-if="readings.length === 0" class="empty-state">
       <span class="empty-icon">📜</span>
-      <span class="empty-text">还没有占卜记录</span>
-      <span class="empty-hint">去抽第一张牌吧~</span>
+      <span class="empty-text">{{ t('emptyHistory') }}</span>
+      <span class="empty-hint">{{ t('emptyHint') }}</span>
       <button class="start-btn" @click="goToDraw">
-        <span class="btn-text">开始占卜</span>
+        <span class="btn-text">{{ t('startReading') }}</span>
       </button>
     </div>
     
@@ -24,7 +24,7 @@
         @click="viewReading(reading.timestamp)"
       >
         <div class="card-header">
-          <span class="spread-name">{{ reading.spreadName }}</span>
+          <span class="spread-name">{{ displaySpreadName(reading) }}</span>
           <span class="time">{{ formatTime(reading.timestamp) }}</span>
         </div>
         
@@ -40,21 +40,21 @@
             :class="{ reversed: card.isReversed }"
           >
             <img :src="getCardImage(card)" class="mini-image" mode="aspectFit" @error="setFallbackImage($event, card)" />
-            <span class="mini-name">{{ card.name }}</span>
+            <span class="mini-name">{{ cardName(card) }}</span>
           </div>
           <span v-if="reading.cards.length > 3" class="more-cards">
             +{{ reading.cards.length - 3 }}</span>
         </div>
         
         <div class="card-footer">
-          <span class="cards-count">{{ reading.cards.length }}张牌</span>
-          <span class="view-btn">查看详情 →</span>
+          <span class="cards-count">{{ cardCount(reading.cards.length) }}</span>
+          <span class="view-btn">{{ t('viewDetail') }}</span>
         </div>
       </div>
     </div>
     
     <div v-if="readings.length > 0" class="clear-section">
-      <span class="clear-btn" @click="clearAll">清除所有记录</span>
+      <span class="clear-btn" @click="clearAll">{{ t('clearAll') }}</span>
     </div>
   </div>
 </template>
@@ -62,6 +62,7 @@
 <script setup>
 import { ref, onMounted  } from 'vue';
 import { getCardImage, getFallbackCardImage } from '@/utils/tarot.js';
+import { cardCount, cardName, isEn, t } from '@/utils/i18n.js';
 
 const readings = ref([]);
 
@@ -86,12 +87,14 @@ const formatTime = (timestamp) => {
   // 改为比较日历日期字符串，确保只有真正同一天才显示纯时间
   const isToday = date.toDateString() === now.toDateString();
   if (isToday) {
-    return `今天 ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
+    return `${t('today')} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
   }
   if (diff < 604800000) {
-    return `${Math.floor(diff / 86400000)}天前`;
+    return t('daysAgo', { n: Math.floor(diff / 86400000) });
   }
-  return `${date.getMonth() + 1}月${date.getDate()}日`;
+  return isEn.value
+    ? `${date.toLocaleString('en-US', { month: 'short' })} ${date.getDate()}`
+    : `${date.getMonth() + 1}月${date.getDate()}日`;
 };
 
 const truncateQuestion = (q) => {
@@ -105,19 +108,21 @@ const viewReading = (timestamp) => {
   });
 };
 
+const displaySpreadName = (reading) => isEn.value ? (reading.spreadNameEn || reading.spreadName) : reading.spreadName;
+
 const goToDraw = () => {
   uni.switchTab({ url: '/pages/index/index' });
 };
 
 const clearAll = () => {
   uni.showModal({
-    title: '确认清除',
-    content: '确定要清除所有占卜记录吗？',
+    title: t('confirmClear'),
+    content: t('confirmClearContent'),
     success: (res) => {
       if (res.confirm) {
         uni.removeStorageSync('tarot_readings');
         readings.value = [];
-        uni.showToast({ title: '已清除', icon: 'success' });
+        uni.showToast({ title: t('cleared'), icon: 'success' });
       }
     }
   });

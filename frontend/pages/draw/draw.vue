@@ -17,14 +17,14 @@
           </div>
         </div>
       </div>
-      <span class="shuffle-text">正在洗牌...</span>
-      <span class="shuffle-hint">集中思考你的问题</span>
+      <span class="shuffle-text">{{ t('shuffling') }}</span>
+      <span class="shuffle-hint">{{ t('shuffleHint') }}</span>
     </div>
     
     <!-- 抽牌界面 -->
     <div v-else-if="!isComplete" class="draw-screen">
       <div class="progress">
-        <span class="progress-text">请点击抽取第 {{ currentIndex + 1 }} 张牌</span>
+        <span class="progress-text">{{ t('drawProgress', { n: currentIndex + 1 }) }}</span>
         <div class="progress-bar">
           <div class="progress-fill" :style="{ width: `${(currentIndex / totalCards) * 100}%` }"></div>
         </div>
@@ -42,7 +42,7 @@
             <img :src="cardBackImage" class="card-back" />
           </div>
         </div>
-        <span class="deck-count">剩余 {{ remainingCards }} 张</span>
+        <span class="deck-count">{{ t('remaining', { n: remainingCards }) }}</span>
       </div>
       
       <!-- 已抽牌展示 -->
@@ -55,7 +55,7 @@
             :class="{ reversed: card.isReversed }"
           >
             <img :src="getCardImage(card)" class="card-image" mode="aspectFit" @error="setFallbackImage($event, card)" />
-            <span class="position-label">{{ card.position?.name || `第${index + 1}张` }}</span>
+            <span class="position-label">{{ positionName(card.position, t('drawnPosition', { n: index + 1 })) }}</span>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
     
     <!-- 完成界面 -->
     <div v-else class="complete-screen">
-      <span class="complete-text">抽牌完成 ✨</span>
+      <span class="complete-text">{{ t('drawComplete') }}</span>
       <div class="cards-preview">
         <div 
           v-for="(card, index) in drawnCards" 
@@ -73,12 +73,12 @@
           :style="{ animationDelay: `${index * 0.1}s` }"
         >
           <img :src="getCardImage(card)" class="card-image" mode="aspectFit" @error="setFallbackImage($event, card)" />
-          <span class="card-name">{{ card.name }}</span>
-          <span class="orientation">{{ card.isReversed ? '逆位' : '正位' }}</span>
+          <span class="card-name">{{ cardName(card) }}</span>
+          <span class="orientation">{{ orientation(card.isReversed) }}</span>
         </div>
       </div>
       <button class="result-btn" @click="viewResult">
-        <span class="btn-text">查看解读</span>
+        <span class="btn-text">{{ t('viewReading') }}</span>
       </button>
     </div>
   </div>
@@ -89,6 +89,7 @@ import { ref, computed } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 import { SPREADS } from '@/data/tarot-data.js';
 import { shuffleDeck, getCardImage, getFallbackCardImage, getCardBackImage } from '@/utils/tarot.js';
+import { cardName, orientation, positionName, t } from '@/utils/i18n.js';
 
 const cardBackImage = getCardBackImage();
 
@@ -168,6 +169,7 @@ const viewResult = () => {
   const reading = {
     spreadId: spreadId.value,
     spreadName: spread.value.name,
+    spreadNameEn: spread.value.nameEn,
     question: question.value,
     cards: drawnCards.value,
     timestamp: Date.now()
